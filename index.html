@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- update -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DoorDrop | Hyperlocal Delivery Service</title>
+<title>DoorDrop | Bangalore Delivery Network</title>
 
 <style>
 body {
@@ -36,6 +35,7 @@ header {
   color: #000;
   font-weight: bold;
   cursor: pointer;
+  margin: 5px;
 }
 
 .section {
@@ -71,9 +71,10 @@ footer {
 </header>
 
 <section class="section">
-  <h1>Hyperlocal Delivery Made Simple</h1>
-  <p>Fast, reliable last-mile delivery for food, parcels & errands in Bangalore</p>
-  <button class="btn" onclick="contact()">Book Delivery</button>
+  <h1>Hyperlocal Delivery Across Bangalore</h1>
+  <p>Connecting cloud kitchens, vegetable shops & delivery partners in one network</p>
+  <button class="btn" onclick="contact()">📲 Book Delivery</button>
+  <button class="btn" onclick="joinGroup()">🚀 Join WhatsApp Group</button>
 </section>
 
 <section class="section">
@@ -83,6 +84,16 @@ footer {
     <div class="card">📦 Parcel Pickup & Drop</div>
     <div class="card">🏢 Apartment Deliveries</div>
     <div class="card">⚡ On-demand Delivery</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Who Can Use DoorDrop?</h2>
+  <div class="grid">
+    <div class="card">🍱 Cloud Kitchens</div>
+    <div class="card">🥬 Vegetable Shops</div>
+    <div class="card">🏠 Home Food Sellers</div>
+    <div class="card">🏪 Small Local Stores</div>
   </div>
 </section>
 
@@ -114,6 +125,16 @@ footer {
 </section>
 
 <section class="section">
+  <h2>Why Choose DoorDrop?</h2>
+  <div class="grid">
+    <div class="card">✅ Low Cost Delivery</div>
+    <div class="card">⚡ Fast Service</div>
+    <div class="card">📲 WhatsApp Booking</div>
+    <div class="card">🤝 No Commission for Small Sellers</div>
+  </div>
+</section>
+
+<section class="section">
   <h2>How It Works</h2>
   <div class="grid">
     <div class="card">1️⃣ Customer places order</div>
@@ -124,8 +145,10 @@ footer {
 </section>
 
 <footer>
-  📍 Kannuru, Bangalore<br>
-  📞 Contact: 9632035612<br>
+  📍 Serving All Areas in Bangalore<br>
+  📞 Contact: 9632035612<br><br>
+  <button class="btn" onclick="joinGroup()">Join WhatsApp Network</button>
+  <br><br>
   © DoorDrop
 </footer>
 
@@ -142,6 +165,10 @@ function joinKitchen() {
   window.open("https://wa.me/919632035612?text=Hi I want DoorDrop for my kitchen");
 }
 
+function joinGroup() {
+  window.open("https://chat.whatsapp.com/LYlochc9FKCE1vGUXscI1F?mode=gi_t");
+}
+
 function calc() {
   let km = document.getElementById("km").value;
   let cost = 30 + (km * 12);
@@ -151,4 +178,3 @@ function calc() {
 
 </body>
 </html>
-
