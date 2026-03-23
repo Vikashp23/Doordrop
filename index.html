@@ -3,176 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DoorDrop | Bangalore Delivery Network</title>
+<title>DoorDrop | Smart Delivery Network</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f14;
-  color: #fff;
-}
-
-header {
-  background: #121824;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #20c997;
-}
-
-.btn {
-  padding: 10px 15px;
-  background: #20c997;
-  border: none;
-  border-radius: 8px;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.section {
-  padding: 30px 20px;
-  text-align: center;
-}
-
-.card {
-  background: #151e2d;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #121824;
-}
+body {margin:0;font-family:Arial;background:#0b0f14;color:#fff;}
+header {display:flex;justify-content:space-between;padding:15px 30px;background:#121824;align-items:center;}
+.logo {font-weight:bold;color:#20c997;font-size:22px;}
+.btn {background:#20c997;color:#000;padding:10px 15px;border:none;border-radius:8px;cursor:pointer;margin:5px;font-weight:bold;}
+.section {padding:50px 20px;text-align:center;}
+.hero {padding:80px 20px;background:linear-gradient(135deg,#0b0f14,#151e2d);}
+.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;}
+.card {background:#151e2d;padding:20px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.3);} 
+input, select {padding:12px;margin:8px;width:90%;border-radius:8px;border:none;}
+footer {background:#121824;padding:20px;text-align:center;}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">🚚 DoorDrop</div>
-  <button class="btn" onclick="contact()">Contact</button>
+<div class="logo">🚚 DoorDrop</div>
+<div>
+<button class="btn" onclick="showBooking()">Book Now</button>
+<button class="btn" onclick="showLogin()">Register</button>
+<button class="btn" onclick="loginUser()">Login</button>
+</div>
+<button class="btn" onclick="showAdmin()">Admin</button>
 </header>
 
-<section class="section">
-  <h1>Hyperlocal Delivery Across Bangalore</h1>
-  <p>Connecting cloud kitchens, vegetable shops & delivery partners in one network</p>
-  <button class="btn" onclick="contact()">📲 Book Delivery</button>
-  <button class="btn" onclick="joinGroup()">🚀 Join WhatsApp Group</button>
+<section class="hero">
+<h1>Smart Delivery Solutions for Bangalore 🚀</h1>
+<p>Serving shops, professionals, and individuals with fast and reliable delivery</p>
+<button class="btn" onclick="showBooking()">Start Booking</button>
 </section>
 
 <section class="section">
-  <h2>Our Services</h2>
-  <div class="grid">
-    <div class="card">🍱 Food Delivery</div>
-    <div class="card">📦 Parcel Pickup & Drop</div>
-    <div class="card">🏢 Apartment Deliveries</div>
-    <div class="card">⚡ On-demand Delivery</div>
-  </div>
+<h2>Who Can Use DoorDrop?</h2>
+<div class="grid">
+<div class="card">🥬 Vegetable Shops</div>
+<div class="card">🍱 Cloud Kitchens</div>
+<div class="card">🏪 Local Stores</div>
+<div class="card">🧾 CA & Offices</div>
+</div>
 </section>
 
 <section class="section">
-  <h2>Who Can Use DoorDrop?</h2>
-  <div class="grid">
-    <div class="card">🍱 Cloud Kitchens</div>
-    <div class="card">🥬 Vegetable Shops</div>
-    <div class="card">🏠 Home Food Sellers</div>
-    <div class="card">🏪 Small Local Stores</div>
-  </div>
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card">📦 Parcel Delivery</div>
+<div class="card">📄 Document Delivery</div>
+<div class="card">🍱 Food Delivery</div>
+<div class="card">⚡ Same Day Delivery</div>
+</div>
 </section>
 
-<section class="section">
-  <h2>Delivery Pricing</h2>
-  <div class="card">
-    Base ₹30 + ₹12 per km<br><br>
-    <input id="km" placeholder="Enter KM" style="padding:10px;">
-    <button class="btn" onclick="calc()">Calculate</button>
-    <p id="result"></p>
-  </div>
+<!-- BOOKING FORM -->
+<section class="section" id="bookingBox" style="display:none;">
+<h2>Book a Delivery</h2>
+<input type="text" id="pickup" placeholder="Pickup Address"><br>
+<input type="text" id="drop" placeholder="Drop Address"><br>
+<input type="text" id="item" placeholder="Item Details"><br>
+<input type="text" id="contact" placeholder="Contact Number"><br>
+<button class="btn" onclick="submitBooking()">Submit Booking</button>
 </section>
 
-<section class="section">
-  <h2>Join as Partner</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>🏍️ Delivery Partner</h3>
-      Earn ₹40–₹100 per order<br><br>
-      <button class="btn" onclick="joinRider()">Join Now</button>
-    </div>
-
-    <div class="card">
-      <h3>🍱 Kitchen Partner</h3>
-      Get delivery support<br><br>
-      <button class="btn" onclick="joinKitchen()">Join Now</button>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Why Choose DoorDrop?</h2>
-  <div class="grid">
-    <div class="card">✅ Low Cost Delivery</div>
-    <div class="card">⚡ Fast Service</div>
-    <div class="card">📲 WhatsApp Booking</div>
-    <div class="card">🤝 No Commission for Small Sellers</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>How It Works</h2>
-  <div class="grid">
-    <div class="card">1️⃣ Customer places order</div>
-    <div class="card">2️⃣ Rider assigned</div>
-    <div class="card">3️⃣ Pickup & delivery</div>
-    <div class="card">4️⃣ Payment done</div>
-  </div>
+<!-- REGISTER -->
+<section class="section" id="loginBox" style="display:none;">
+<h2>Register</h2>
+<input type="text" id="name" placeholder="Enter Name"><br>
+<input type="email" id="email" placeholder="Enter Email"><br>
+<input type="text" id="phone" placeholder="Enter Phone"><br>
+<select id="role">
+<option>Customer</option>
+<option>Rider</option>
+<option>Business</option>
+</select><br>
+<input type="password" id="password" placeholder="Create Password"><br><br>
+<button class="btn" onclick="registerUser()">Submit</button>
 </section>
 
 <footer>
-  📍 Serving All Areas in Bangalore<br>
-  📞 Contact: 9632035612<br><br>
-  <button class="btn" onclick="joinGroup()">Join WhatsApp Network</button>
-  <br><br>
-  © DoorDrop
+📞 8539979271<br>
+<button class="btn" onclick="joinGroup()">Join WhatsApp</button>
 </footer>
 
+<!-- ADMIN DASHBOARD -->
+<section class="section" id="adminBox" style="display:none;">
+<h2>Admin Dashboard</h2>
+
+<div class="card">
+<h3>Total Users</h3>
+<p id="totalUsers">0</p>
+</div>
+
+<div class="card">
+<h3>Total Bookings</h3>
+<p id="totalBookings">0</p>
+</div>
+
+<div class="card">
+<h3>All Bookings</h3>
+<div id="bookingList"></div>
+</div>
+
+<div class="card">
+<h3>All Users</h3>
+<div id="userList"></div>
+</div>
+</section>
+
 <script>
-function contact() {
-  window.open("https://wa.me/919632035612?text=Hi I want DoorDrop delivery");
+function showBooking(){
+document.getElementById("bookingBox").style.display="block";
+window.scrollTo(0,document.body.scrollHeight);
 }
 
-function joinRider() {
-  window.open("https://wa.me/919632035612?text=Hi I want to join as delivery partner");
+function showLogin(){
+document.getElementById("loginBox").style.display="block";
+window.scrollTo(0,document.body.scrollHeight);
 }
 
-function joinKitchen() {
-  window.open("https://wa.me/919632035612?text=Hi I want DoorDrop for my kitchen");
+function submitBooking(){
+let pickup=document.getElementById("pickup").value;
+let drop=document.getElementById("drop").value;
+let item=document.getElementById("item").value;
+let contact=document.getElementById("contact").value;
+
+let bookingId="BK"+Math.floor(Math.random()*10000);
+
+let bookingData={pickup,drop,item,contact,bookingId};
+
+let bookings=JSON.parse(localStorage.getItem("bookings")||"[]");
+bookings.push(bookingData);
+localStorage.setItem("bookings",JSON.stringify(bookings));
+
+let message=`New Booking:%0ABookingID: ${bookingId}%0APickup: ${pickup}%0ADrop: ${drop}%0AItem: ${item}%0AContact: ${contact}`;
+
+alert("Booking Confirmed! ID: "+bookingId);
+
+window.open("https://wa.me/918539979271?text="+message);
+}%0ADrop: ${drop}%0AItem: ${item}%0AContact: ${contact}`;
+
+window.open("https://wa.me/918539979271?text="+message);
 }
 
-function joinGroup() {
-  window.open("https://chat.whatsapp.com/LYlochc9FKCE1vGUXscI1F?mode=gi_t");
+function registerUser(){
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let role=document.getElementById("role").value;
+let password=document.getElementById("password").value;
+
+let userId="DD"+Math.floor(Math.random()*10000);
+
+let userData={name,email,phone,role,password,userId};
+
+localStorage.setItem(userId, JSON.stringify(userData));
+
+let message=`New Registration:%0AUserID: ${userId}%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ARole: ${role}`;
+
+alert("Registered Successfully! Your User ID: "+userId);
+
+window.open("https://wa.me/918539979271?text="+message);
 }
 
-function calc() {
-  let km = document.getElementById("km").value;
-  let cost = 30 + (km * 12);
-  document.getElementById("result").innerText = "Estimated Cost: ₹" + cost;
+// LOGIN SYSTEM
+function loginUser(){
+let userId=prompt("Enter User ID");
+let password=prompt("Enter Password");
+
+let data=localStorage.getItem(userId);
+
+if(data){
+let user=JSON.parse(data);
+if(user.password===password){
+alert("Login Successful: "+user.name);
+}else{
+alert("Wrong Password");
+}
+}else{
+alert("User not found");
+}
+}%0AEmail: ${email}%0APhone: ${phone}%0ARole: ${role}`;
+
+window.open("https://wa.me/918539979271?text="+message);
+}
+
+function joinGroup(){
+window.open("https://chat.whatsapp.com/LYlochc9FKCE1vGUXscI1F");
+}
+
+// ADMIN DASHBOARD
+function showAdmin(){
+document.getElementById("adminBox").style.display="block";
+window.scrollTo(0,document.body.scrollHeight);
+
+// USERS
+let totalUsers=0;
+let userHTML="";
+
+for(let key in localStorage){
+try{
+let data=JSON.parse(localStorage.getItem(key));
+if(data && data.userId){
+totalUsers++;
+userHTML+=`<p>${data.userId} - ${data.name} (${data.role})</p>`;
+}
+}catch(e){}
+}
+
+document.getElementById("totalUsers").innerText=totalUsers;
+document.getElementById("userList").innerHTML=userHTML;
+
+// BOOKINGS
+let bookings=JSON.parse(localStorage.getItem("bookings")||"[]");
+document.getElementById("totalBookings").innerText=bookings.length;
+
+let bookingHTML="";
+bookings.forEach(b=>{
+bookingHTML+=`<p>${b.bookingId} - ${b.pickup} → ${b.drop}</p>`;
+});
+
+document.getElementById("bookingList").innerHTML=bookingHTML;
 }
 </script>
 
