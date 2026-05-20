@@ -1,449 +1,341 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vikash Builds AI | Creator Portfolio</title>
-    <meta name="description" content="AI Artist, Storyteller, and Productivity Creator showcasing high-end visual concepts and automated workflows.">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brandBlack: '#000000',
-                        brandDark: '#09090b',
-                        neonPink: '#ff007f',
-                        neonBlue: '#00f0ff',
-                        glassBg: 'rgba(15, 15, 20, 0.5)',
-                        glassBorder: 'rgba(255, 255, 255, 0.06)'
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikash Builds AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #000000;
-        }
-        .glass-panel {
-            background: rgba(12, 12, 16, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .masonry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            grid-gap: 24px;
-        }
-        /* Custom Custom Scrollbar Styling */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000000; }
-        ::-webkit-scrollbar-thumb { background: #1f1f23; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #ff007f; }
-    </style>
+body::-webkit-scrollbar{
+    width:8px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background:#00ffb3;
+    border-radius:10px;
+}
+
+header{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    position:relative;
+    overflow:hidden;
+}
+
+.bg-glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#00ffb355 0%,transparent 70%);
+    filter:blur(50px);
+    z-index:0;
+}
+
+.hero{
+    text-align:center;
+    z-index:2;
+}
+
+.profile-img{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #00ffb3;
+    box-shadow:0 0 30px #00ffb3;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#00ffb3,#00d9ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:#cfcfcf;
+    font-size:1.1rem;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.btn-group{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.btn{
+    padding:14px 28px;
+    border-radius:40px;
+    border:none;
+    text-decoration:none;
+    color:white;
+    background:#111;
+    border:1px solid #00ffb355;
+    transition:0.4s;
+    font-weight:500;
+}
+
+.btn:hover{
+    background:#00ffb3;
+    color:black;
+    transform:translateY(-5px);
+    box-shadow:0 0 20px #00ffb3;
+}
+
+section{
+    padding:80px 8%;
+}
+
+.section-title{
+    font-size:2.5rem;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.filter-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.filter-buttons button{
+    background:#111;
+    color:white;
+    border:none;
+    padding:10px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.filter-buttons button:hover{
+    background:#00ffb3;
+    color:black;
+}
+
+.gallery{
+    columns:3 300px;
+    column-gap:18px;
+}
+
+.card{
+    break-inside:avoid;
+    margin-bottom:18px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    overflow:hidden;
+    transition:0.4s;
+    backdrop-filter:blur(12px);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 30px rgba(0,255,179,0.3);
+}
+
+.card img{
+    width:100%;
+    display:block;
+}
+
+.card-content{
+    padding:18px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+    font-size:1.2rem;
+}
+
+.card-content p{
+    color:#c9c9c9;
+    font-size:0.95rem;
+    line-height:1.6;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:15px;
+    padding:6px 14px;
+    border-radius:30px;
+    background:#00ffb322;
+    color:#00ffb3;
+    font-size:0.8rem;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#9e9e9e;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.socials{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.socials a{
+    text-decoration:none;
+    color:white;
+    background:#111;
+    padding:12px 20px;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.socials a:hover{
+    background:#00ffb3;
+    color:black;
+}
+
+@media(max-width:768px){
+.hero h1{
+    font-size:2.5rem;
+}
+
+.hero p{
+    font-size:1rem;
+}
+
+.profile-img{
+    width:120px;
+    height:120px;
+}
+}
+</style>
 </head>
-<body class="text-gray-100 antialiased selection:bg-neonPink selection:text-white overflow-x-hidden">
+<body>
 
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-neonPink/10 rounded-full blur-[140px] pointer-events-none"></div>
-    <div class="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-neonBlue/5 rounded-full blur-[160px] pointer-events-none"></div>
+<header>
+<div class="bg-glow"></div>
+<div class="hero">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500" class="profile-img">
+<h1>Vikash Builds AI 🚀</h1>
+<p>
+AI • Creativity • Finance • Storytelling<br><br>
+Showcasing AI-generated visuals, cinematic concepts, productivity designs, romantic storytelling prompts, finance creativity, and digital creator aesthetics.
+</p>
 
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-        <a href="https://wa.me/919901515155" target="_blank" class="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-white text-lg shadow-lg hover:scale-110 transition duration-300 group relative">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span class="absolute right-14 bg-black border border-white/10 px-2 py-1 rounded text-[10px] tracking-widest uppercase font-mono opacity-0 group-hover:opacity-100 transition whitespace-nowrap">WhatsApp Chat</span>
-        </a>
-        <a href="https://instagram.com/" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 flex items-center justify-center text-white text-lg shadow-lg hover:scale-110 transition duration-300 group relative">
-            <i class="fa-brands fa-instagram"></i>
-            <span class="absolute right-14 bg-black border border-white/10 px-2 py-1 rounded text-[10px] tracking-widest uppercase font-mono opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Follow Channel</span>
-        </a>
-    </div>
+<div class="btn-group">
+<a href="#gallery" class="btn">Explore Posts</a>
+<a href="https://instagram.com" class="btn">Instagram</a>
+<a href="https://wa.me" class="btn">WhatsApp</a>
+</div>
+</div>
+</header>
 
-    <nav class="fixed top-0 inset-x-0 z-40 bg-brandBlack/60 backdrop-blur-md border-b border-white/[0.04] px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="text-sm font-extrabold tracking-[0.25em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-neutral-500 font-mono">
-                VIKASH BUILDS AI
-            </a>
-            <div class="hidden md:flex space-x-8 text-[11px] uppercase tracking-[0.2em] font-medium text-neutral-400">
-                <a href="#feed" class="hover:text-white transition">Gallery Grid</a>
-                <a href="#creator-hub" class="hover:text-white transition">Publishing Desk</a>
-                <a href="#contact" class="hover:text-white transition">Inquiries</a>
-            </div>
-            <button onclick="document.getElementById('creator-hub').scrollIntoView();" class="text-[10px] font-bold uppercase tracking-[0.15em] px-4 py-2 bg-white text-black rounded-full hover:bg-neutral-200 transition">
-                Console Login
-            </button>
-        </div>
-    </nav>
+<section id="gallery">
+<h2 class="section-title">Visual Gallery ✨</h2>
 
-    <header class="pt-32 pb-20 px-6 max-w-5xl mx-auto text-center relative z-10">
-        <div class="space-y-6">
-            <div class="relative w-28 h-28 mx-auto group">
-                <div class="absolute inset-0 bg-gradient-to-tr from-neonPink to-neonBlue rounded-full animate-spin [animation-duration:8s] p-[2px]">
-                    <div class="w-full h-full bg-black rounded-full"></div>
-                </div>
-                <div class="absolute inset-[3px] bg-neutral-900 rounded-full overflow-hidden border border-white/10 flex items-center justify-center">
-                    <i class="fa-solid fa-user-astronaut text-3xl text-neutral-400"></i>
-                </div>
-            </div>
+<div class="filter-buttons">
+<button>All</button>
+<button>AI Art</button>
+<button>Pixar Style</button>
+<button>Finance</button>
+<button>Romantic</button>
+<button>Productivity</button>
+</div>
 
-            <div class="space-y-2">
-                <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white">Vikash Builds AI 🚀</h1>
-                <p class="text-xs md:text-sm tracking-[0.3em] uppercase font-mono text-transparent bg-clip-text bg-gradient-to-r from-neonPink via-white to-neonBlue font-semibold">
-                    AI • Creativity • Finance • Storytelling
-                </p>
-            </div>
+<div class="gallery">
 
-            <p class="text-xs md:text-sm text-neutral-400 max-w-xl mx-auto leading-relaxed font-light">
-                Curating premium dynamic asset structures, romantic scene logic prompts, and clean minimal productivity interfaces. Blending quantitative finance logic with modern generative visualization models.
-            </p>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200">
+<div class="card-content">
+<h3>AI Workspace Aesthetic</h3>
+<p>Modern cinematic creator workspace powered by AI, productivity, and storytelling visuals.</p>
+<span class="tag">AI Art</span>
+</div>
+</div>
 
-            <div class="flex justify-center items-center gap-8 py-4 max-w-sm mx-auto border-y border-white/[0.06] text-center">
-                <div>
-                    <span class="block text-sm font-bold text-white font-mono">140+</span>
-                    <span class="text-[10px] uppercase tracking-widest text-neutral-500">Creations</span>
-                </div>
-                <div>
-                    <span class="block text-sm font-bold text-white font-mono">12.8K</span>
-                    <span class="text-[10px] uppercase tracking-widest text-neutral-500">Reach</span>
-                </div>
-                <div>
-                    <span class="block text-sm font-bold text-white font-mono">100%</span>
-                    <span class="text-[10px] uppercase tracking-widest text-neutral-500">AI Rendered</span>
-                </div>
-            </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200">
+<div class="card-content">
+<h3>Romantic Storytelling</h3>
+<p>Emotional cinematic couple storytelling with modern visual aesthetics and AI creativity.</p>
+<span class="tag">Romantic</span>
+</div>
+</div>
 
-            <div class="flex flex-wrap justify-center gap-3 pt-2">
-                <a href="https://instagram.com/" target="_blank" class="px-5 py-2.5 bg-white text-black font-bold text-xs rounded-full hover:bg-neutral-200 transition tracking-wider flex items-center gap-2">
-                    <i class="fa-brands fa-instagram text-sm"></i> Instagram Profile
-                </a>
-                <button onclick="document.getElementById('feed').scrollIntoView();" class="px-5 py-2.5 bg-neutral-900 border border-white/10 text-white font-semibold text-xs rounded-full hover:bg-neutral-800 transition tracking-wider">
-                    Explore Gallery
-                </button>
-            </div>
-        </div>
-    </header>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200">
+<div class="card-content">
+<h3>Finance Creativity</h3>
+<p>Finance dashboards, productivity systems, and AI-powered visual concepts combined together.</p>
+<span class="tag">Finance</span>
+</div>
+</div>
 
-    <main id="feed" class="py-12 px-6 max-w-7xl mx-auto relative z-10">
-        
-        <div class="flex flex-wrap justify-start md:justify-center items-center gap-2 overflow-x-auto pb-8 border-b border-white/[0.05] mb-12">
-            <button onclick="filterGallery('all')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-white text-black transition">All Streams</button>
-            <button onclick="filterGallery('AI Art')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-neutral-900 text-neutral-400 border border-white/5 hover:text-white transition">AI Art</button>
-            <button onclick="filterGallery('Couple Stories')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-neutral-900 text-neutral-400 border border-white/5 hover:text-white transition">Couple Stories</button>
-            <button onclick="filterGallery('Productivity')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-neutral-900 text-neutral-400 border border-white/5 hover:text-white transition">Productivity</button>
-            <button onclick="filterGallery('Finance')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-neutral-900 text-neutral-400 border border-white/5 hover:text-white transition">Finance</button>
-            <button onclick="filterGallery('Motivational')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-neutral-900 text-neutral-400 border border-white/5 hover:text-white transition">Motivational</button>
-            <button onclick="filterGallery('Calendar Designs')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-neutral-900 text-neutral-400 border border-white/5 hover:text-white transition">Calendar Designs</button>
-            <button onclick="filterGallery('Pixar Style')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium tracking-wider bg-neutral-900 text-neutral-400 border border-white/5 hover:text-white transition">Pixar Style</button>
-        </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200">
+<div class="card-content">
+<h3>Productivity Visuals</h3>
+<p>Clean modern productivity and creator-focused digital storytelling aesthetics.</p>
+<span class="tag">Productivity</span>
+</div>
+</div>
 
-        <div class="masonry-grid" id="portfolio-masonry">
-            
-            <div class="gallery-card group relative overflow-hidden rounded-xl bg-neutral-950 border border-white/[0.05] cursor-pointer" data-category="Couple Stories" onclick="openMediaOverlay(this)">
-                <div class="aspect-[3/4] w-full bg-gradient-to-b from-neutral-900 to-neutral-950 flex items-center justify-center relative">
-                    <div class="text-center p-6 space-y-2 opacity-40 group-hover:opacity-20 transition">
-                        <i class="fa-solid fa-heart-pulse text-3xl text-neonPink"></i>
-                        <p class="text-[11px] font-mono tracking-widest uppercase">Couple Stories Render</p>
-                    </div>
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center z-10">
-                        <i class="fa-brands fa-instagram text-2xl text-white"></i>
-                    </div>
-                </div>
-                <div class="p-4 space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[9px] font-mono tracking-widest uppercase text-neonPink px-2 py-0.5 bg-neonPink/10 rounded">Couple Stories</span>
-                        <span class="text-[10px] text-neutral-600 font-mono">01/07</span>
-                    </div>
-                    <h3 class="text-sm font-bold text-white line-clamp-1">Cinematic Hand-In-Hand Pathway</h3>
-                    <p class="text-xs text-neutral-400 line-clamp-2 font-light">An intimate cinematic framework tracking a couple walking along a sunlit ocean terrace pathway. Generated using micro-focus context parameters.</p>
-                </div>
-            </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200">
+<div class="card-content">
+<h3>Creator Lifestyle</h3>
+<p>Building smarter careers with AI, creativity, finance, and content storytelling.</p>
+<span class="tag">Creator Life</span>
+</div>
+</div>
 
-            <div class="gallery-card group relative overflow-hidden rounded-xl bg-neutral-950 border border-white/[0.05] cursor-pointer" data-category="Pixar Style" onclick="openMediaOverlay(this)">
-                <div class="aspect-square w-full bg-gradient-to-b from-neutral-900 to-neutral-950 flex items-center justify-center relative">
-                    <div class="text-center p-6 space-y-2 opacity-40 group-hover:opacity-20 transition">
-                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-neonBlue"></i>
-                        <p class="text-[11px] font-mono tracking-widest uppercase">Pixar Style Sheet</p>
-                    </div>
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center z-10">
-                        <i class="fa-brands fa-instagram text-2xl text-white"></i>
-                    </div>
-                </div>
-                <div class="p-4 space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[9px] font-mono tracking-widest uppercase text-neonBlue px-2 py-0.5 bg-neonBlue/10 rounded">Pixar Style</span>
-                        <span class="text-[10px] text-neutral-600 font-mono">02/07</span>
-                    </div>
-                    <h3 class="text-sm font-bold text-white line-clamp-1">Character Texture Mapping Sheet</h3>
-                    <p class="text-xs text-neutral-400 line-clamp-2 font-light">Multi-angle expressions tracking vector structures and character design guides for personal branding assets.</p>
-                </div>
-            </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200">
+<div class="card-content">
+<h3>AI Calendar Concepts</h3>
+<p>Stylized aesthetic calendar concepts inspired by cinematic and Pinterest-style artwork.</p>
+<span class="tag">Design</span>
+</div>
+</div>
 
-            <div class="gallery-card group relative overflow-hidden rounded-xl bg-neutral-950 border border-white/[0.05] cursor-pointer" data-category="Finance" onclick="openMediaOverlay(this)">
-                <div class="aspect-[4/3] w-full bg-gradient-to-b from-neutral-900 to-neutral-950 flex items-center justify-center relative">
-                    <div class="text-center p-6 space-y-2 opacity-40 group-hover:opacity-20 transition">
-                        <i class="fa-solid fa-chart-line text-3xl text-emerald-400"></i>
-                        <p class="text-[11px] font-mono tracking-widest uppercase">Productivity Logic Infographic</p>
-                    </div>
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center z-10">
-                        <i class="fa-brands fa-instagram text-2xl text-white"></i>
-                    </div>
-                </div>
-                <div class="p-4 space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[9px] font-mono tracking-widest uppercase text-emerald-400 px-2 py-0.5 bg-emerald-400/10 rounded">Finance</span>
-                        <span class="text-[10px] text-neutral-600 font-mono">03/07</span>
-                    </div>
-                    <h3 class="text-sm font-bold text-white line-clamp-1">GSTR-2B Audit Optimization Track</h3>
-                    <p class="text-xs text-neutral-400 line-clamp-2 font-light">A clean visual roadmap outlining prompt logic mapping constraints utilized to trace transactional variances inside raw ledgers.</p>
-                </div>
-            </div>
+</div>
+</section>
 
-            <div class="gallery-card group relative overflow-hidden rounded-xl bg-neutral-950 border border-white/[0.05] cursor-pointer" data-category="Calendar Designs" onclick="openMediaOverlay(this)">
-                <div class="aspect-[3/4] w-full bg-gradient-to-b from-neutral-900 to-neutral-950 flex items-center justify-center relative">
-                    <div class="text-center p-6 space-y-2 opacity-40 group-hover:opacity-20 transition">
-                        <i class="fa-regular fa-calendar-lines text-3xl text-purple-400"></i>
-                        <p class="text-[11px] font-mono tracking-widest uppercase">Minimalist Calendar Engine</p>
-                    </div>
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center z-10">
-                        <i class="fa-brands fa-instagram text-2xl text-white"></i>
-                    </div>
-                </div>
-                <div class="p-4 space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[9px] font-mono tracking-widest uppercase text-purple-400 px-2 py-0.5 bg-purple-400/10 rounded">Calendar Designs</span>
-                        <span class="text-[10px] text-neutral-600 font-mono">04/07</span>
-                    </div>
-                    <h3 class="text-sm font-bold text-white line-clamp-1">Functional Aesthetic Interface Console</h3>
-                    <p class="text-xs text-neutral-400 line-clamp-2 font-light">Custom layout systems configuration mapping calendar scheduling vectors against hyper-clean editorial design tracks.</p>
-                </div>
-            </div>
+<footer>
+<h3>Vikash Builds AI 🚀</h3>
+<p>Creating stories, visuals, productivity systems, and AI-powered creativity.</p>
 
-        </div>
-    </main>
-
-    <section id="creator-hub" class="py-24 px-6 bg-brandDark/50 border-t border-white/[0.04]">
-        <div class="max-w-xl mx-auto">
-            <div class="text-center space-y-2 mb-10">
-                <span class="text-[10px] uppercase tracking-[0.25em] font-mono text-neonBlue">Content Live Desk</span>
-                <h2 class="text-2xl font-bold text-white">Instant Content Publisher</h2>
-                <p class="text-xs text-neutral-500 font-light">Publish fresh conceptual designs or tracking metrics immediately down to your live gallery feed matrix above—no programmatic modifications required.</p>
-            </div>
-
-            <form id="publishing-form" onsubmit="executeLivePublish(event)" class="glass-panel p-6 rounded-2xl space-y-4">
-                <div class="space-y-1">
-                    <label class="block text-[10px] uppercase font-mono tracking-widest text-neutral-400">Target Categorization Stream</label>
-                    <select id="post-category" class="w-full bg-neutral-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-neonBlue transition font-mono">
-                        <option value="AI Art">AI Art</option>
-                        <option value="Couple Stories">Couple Stories</option>
-                        <option value="Productivity">Productivity</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Motivational">Motivational</option>
-                        <option value="Calendar Designs">Calendar Designs</option>
-                        <option value="Pixar Style">Pixar Style</option>
-                    </select>
-                </div>
-
-                <div class="space-y-1">
-                    <label class="block text-[10px] uppercase font-mono tracking-widest text-neutral-400">Creation Title / Headline</label>
-                    <input type="text" id="post-title" required placeholder="e.g., Ultra-Realistic Cinematic Editorial" class="w-full bg-neutral-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-neonBlue transition">
-                </div>
-
-                <div class="space-y-1">
-                    <label class="block text-[10px] uppercase font-mono tracking-widest text-neutral-400">Instagram Caption / Narrative Log</label>
-                    <textarea id="post-caption" rows="3" required placeholder="Paste your context prompt, structural storytelling metadata, or system configuration logs here..." class="w-full bg-neutral-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-neonBlue transition font-light leading-relaxed"></textarea>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="space-y-1">
-                        <label class="block text-[10px] uppercase font-mono tracking-widest text-neutral-400">Aspect Format Ratio</label>
-                        <select id="post-aspect" class="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none font-mono">
-                            <option value="aspect-square">Square (1:1)</option>
-                            <option value="aspect-[3/4]">Portrait (3:4)</option>
-                            <option value="aspect-[4/3]">Landscape (4:3)</option>
-                        </select>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="block text-[10px] uppercase font-mono tracking-widest text-neutral-400">Mock Display Color</label>
-                        <select id="post-color" class="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none font-mono">
-                            <option value="from-purple-900">Neon Purple Matrix</option>
-                            <option value="from-rose-900">Romantic Rose Glow</option>
-                            <option value="from-cyan-900">Fintech Cyan Beam</option>
-                            <option value="from-amber-900">Motivational Amber Dust</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button type="submit" class="w-full mt-2 py-3 bg-gradient-to-r from-neonPink to-neonBlue text-white text-xs uppercase font-bold tracking-widest rounded-lg hover:opacity-90 transition duration-300">
-                    Push Direct To Live Feed Matrix
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-6 max-w-3xl mx-auto text-center border-t border-white/[0.03]">
-        <div class="space-y-6">
-            <span class="text-[10px] tracking-[0.3em] uppercase font-mono text-neutral-500">// GLOBAL CHANNELS CONNECTION</span>
-            <h2 class="text-3xl font-black text-white">Let's Construct Together</h2>
-            <p class="text-xs md:text-sm text-neutral-400 max-w-md mx-auto leading-relaxed font-light">
-                Seeking customized dynamic accounting dashboards, contextual multi-tier prompt frameworks, or specialized creator collaborative productions? Connect straight through our digital secure channels.
-            </p>
-            <div class="flex flex-wrap justify-center gap-3 pt-4">
-                <a href="mailto:pathakvikash23@gmail.com" class="px-6 py-3 bg-neutral-900 hover:bg-neutral-800 text-white border border-white/10 font-mono text-xs uppercase tracking-widest rounded-full transition">
-                    Secure Email Link
-                </a>
-                <a href="https://wa.me/919901515155" target="_blank" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs uppercase tracking-widest rounded-full transition">
-                    Direct WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-white/[0.04] bg-brandBlack py-12 px-6 text-center text-[10px] text-neutral-600 font-mono tracking-widest">
-        <p>&copy; 2026 VIKASH BUILDS AI // VISUAL CREATOR CONSOLE PLATFORM // ALL SYSTEM NODES FUNCTIONAL</p>
-    </footer>
-
-    <div id="media-lightbox" class="fixed inset-0 z-50 bg-black/95 hidden backdrop-blur-xl flex-col items-center justify-center p-4" onclick="closeMediaOverlay()">
-        <button class="absolute top-6 right-6 text-neutral-400 hover:text-white text-xl" onclick="closeMediaOverlay()"><i class="fa-solid fa-xmark"></i></button>
-        <div class="glass-panel rounded-2xl max-w-lg w-full overflow-hidden p-6 space-y-4" onclick="event.stopPropagation()">
-            <div id="lightbox-vector" class="w-full rounded-lg bg-gradient-to-b from-neutral-900 to-neutral-950 flex flex-col items-center justify-center text-center p-12 border border-white/5">
-                <i id="lightbox-icon" class="fa-solid fa-cube text-4xl text-neonPink mb-3"></i>
-                <span id="lightbox-meta" class="text-[10px] font-mono tracking-widest uppercase text-neutral-500">Node Asset View</span>
-            </div>
-            <div class="space-y-2">
-                <div class="flex justify-between items-center">
-                    <span id="lightbox-tag" class="text-[9px] font-mono tracking-widest uppercase text-neonPink px-2 py-0.5 bg-white/5 rounded">Stream Category</span>
-                    <a href="https://instagram.com/" target="_blank" class="text-xs text-neutral-400 hover:text-white flex items-center gap-1.5 font-mono text-[10px]"><i class="fa-brands fa-instagram text-neonPink"></i> View Native Post</a>
-                </div>
-                <h3 id="lightbox-title" class="text-base font-bold text-white">Dynamic Asset Target Title</h3>
-                <p id="lightbox-desc" class="text-xs text-neutral-400 font-light leading-relaxed">Detailed asset descriptive logic data layout configurations populate here dynamically upon frame entry interaction.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Gallery Category Stream Filtering Action Loops
-        function filterGallery(category) {
-            // Adjust tracking status indicators across category button elements
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-white', 'text-black');
-                btn.classList.add('bg-neutral-900', 'text-neutral-400', 'border-white/5');
-            });
-
-            const eventTarget = window.event.currentTarget;
-            if(eventTarget) {
-                eventTarget.classList.remove('bg-neutral-900', 'text-neutral-400', 'border-white/5');
-                eventTarget.classList.add('bg-white', 'text-black');
-            }
-
-            const cards = document.querySelectorAll('.gallery-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Live Publishing Dashboard Feed Injections
-        function executeLivePublish(event) {
-            event.preventDefault();
-
-            const streamCat = document.getElementById('post-category').value;
-            const targetTitle = document.getElementById('post-title').value;
-            const captionContent = document.getElementById('post-caption').value;
-            const layoutAspect = document.getElementById('post-aspect').value;
-            const visualColor = document.getElementById('post-color').value;
-
-            // Resolve standard core icon indicators based on contextual inputs
-            let structuralIcon = "fa-solid fa-shapes";
-            if (streamCat === "Couple Stories") structuralIcon = "fa-solid fa-heart-pulse text-neonPink";
-            else if (streamCat === "Pixar Style") structuralIcon = "fa-solid fa-wand-magic-sparkles text-neonBlue";
-            else if (streamCat === "Finance") structuralIcon = "fa-solid fa-chart-line text-emerald-400";
-            else if (streamCat === "Calendar Designs") structuralIcon = "fa-regular fa-calendar-lines text-purple-400";
-            else if (streamCat === "Productivity") structuralIcon = "fa-solid fa-bolt text-amber-400";
-            else if (streamCat === "Motivational") structuralIcon = "fa-solid fa-fire-flame-curved text-orange-500";
-
-            const portfolioContainer = document.getElementById('portfolio-masonry');
-            
-            // Build the fresh element card layout matrix
-            const generatedCard = document.createElement('div');
-            generatedCard.className = "gallery-card group relative overflow-hidden rounded-xl bg-neutral-950 border border-white/[0.05] cursor-pointer animate-fade-in";
-            generatedCard.setAttribute('data-category', streamCat);
-            generatedCard.onclick = function() { openMediaOverlay(this); };
-
-            generatedCard.innerHTML = `
-                <div class="${layoutAspect} w-full bg-gradient-to-b ${visualColor} to-neutral-950 flex items-center justify-center relative">
-                    <div class="text-center p-6 space-y-2 opacity-40 group-hover:opacity-20 transition">
-                        <i class="${structuralIcon} text-3xl"></i>
-                        <p class="text-[11px] font-mono tracking-widest uppercase">${streamCat} Render</p>
-                    </div>
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center z-10">
-                        <i class="fa-brands fa-instagram text-2xl text-white"></i>
-                    </div>
-                </div>
-                <div class="p-4 space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[9px] font-mono tracking-widest uppercase text-white px-2 py-0.5 bg-white/5 rounded">${streamCat}</span>
-                        <span class="text-[10px] text-neutral-600 font-mono">NEW</span>
-                    </div>
-                    <h3 class="text-sm font-bold text-white line-clamp-1">${targetTitle}</h3>
-                    <p class="text-xs text-neutral-400 line-clamp-2 font-light">${captionContent}</p>
-                </div>
-            `;
-
-            // Prepend new block layout element straight into the front window stack array
-            portfolioContainer.insertBefore(generatedCard, portfolioContainer.firstChild);
-            
-            // Wipe forms, report success status and scroll smooth down to visibility window paths
-            document.getElementById('publishing-form').reset();
-            document.getElementById('feed').scrollIntoView();
-        }
-
-        // Lightbox Overlay Window Modal Execution Paths
-        function openMediaOverlay(cardElement) {
-            const tag = cardElement.querySelector('span').innerText;
-            const title = cardElement.querySelector('h3').innerText;
-            const description = cardElement.querySelector('p').innerText;
-            const innerIconClass = cardElement.querySelector('i').className;
-            const mockGradBgClass = cardElement.querySelector('div').className;
-
-            // Extract exact background color token parameters for consistency checks
-            const colorTokenMatch = mockGradBgClass.match(/from-\w+-\d+/);
-            const verifiedBgGradient = colorTokenMatch ? colorTokenMatch[0] : 'from-neutral-900';
-
-            const lBox = document.getElementById('media-lightbox');
-            document.getElementById('lightbox-tag').innerText = tag;
-            document.getElementById('lightbox-title').innerText = title;
-            document.getElementById('lightbox-desc').innerText = description;
-            
-            const vectorFrame = document.getElementById('lightbox-vector');
-            vectorFrame.className = `w-full rounded-lg bg-gradient-to-b ${verifiedBgGradient} to-neutral-950 flex flex-col items-center justify-center text-center p-16 border border-white/5`;
-            
-            document.getElementById('lightbox-icon').className = `${innerIconClass} text-4xl mb-3`;
-
-            lBox.classList.remove('hidden');
-        }
-
-        function closeMediaOverlay() {
-            document.getElementById('media-lightbox').add('hidden');
-        }
-    </script>
+<div class="socials">
+<a href="https://instagram.com">Instagram</a>
+<a href="https://wa.me">WhatsApp</a>
+<a href="https://linkedin.com">LinkedIn</a>
+</div>
+</footer>
 
 </body>
 </html>
