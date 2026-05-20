@@ -1,232 +1,844 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DoorDrop | Smart Delivery Network</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikash Builds AI | Building Smarter Careers With AI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-body {margin:0;font-family:Arial;background:#0b0f14;color:#fff;}
-header {display:flex;justify-content:space-between;padding:15px 30px;background:#121824;align-items:center;}
-.logo {font-weight:bold;color:#20c997;font-size:22px;}
-.btn {background:#20c997;color:#000;padding:10px 15px;border:none;border-radius:8px;cursor:pointer;margin:5px;font-weight:bold;}
-.section {padding:50px 20px;text-align:center;}
-.hero {padding:80px 20px;background:linear-gradient(135deg,#0b0f14,#151e2d);}
-.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;}
-.card {background:#151e2d;padding:20px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.3);} 
-input, select {padding:12px;margin:8px;width:90%;border-radius:8px;border:none;}
-footer {background:#121824;padding:20px;text-align:center;}
-</style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        darkbg: '#030712',
+                        darkcard: 'rgba(15, 23, 42, 0.45)',
+                        neonGreen: '#10B981',
+                        electricBlue: '#3B82F6',
+                        glowCyan: '#06B6D4'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030712;
+            color: #F3F4F6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        /* Custom Neon Glow Styles */
+        .neon-border-blue:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            border-color: #3B82F6;
+        }
+        .neon-border-green:hover {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            border-color: #10B981;
+        }
+        .glassmorphism {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Hide Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3B82F6;
+        }
+    </style>
 </head>
+<body class="font-sans antialiased selection:bg-cyan-500 selection:text-black">
 
-<body>
+    <!-- AI Loading Animation Screen -->
+    <div id="loader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-darkbg transition-opacity duration-700">
+        <div class="relative w-24 h-24">
+            <div class="absolute inset-0 rounded-full border-4 border-t-electricBlue border-r-transparent border-b-neonGreen border-l-transparent animate-spin"></div>
+            <div class="absolute inset-2 rounded-full border-4 border-t-transparent border-r-glowCyan border-b-transparent border-l-purple-500 animate-spin" style="animation-direction: reverse; animation-duration: 1s;"></div>
+        </div>
+        <p class="mt-4 font-heading font-bold text-lg tracking-wider text-gradient animate-pulse">INITIALIZING SYSTEMS...</p>
+    </div>
 
-<header>
-<div class="logo">🚚 DoorDrop</div>
-<div>
-<button class="btn" onclick="showBooking()">Book Now</button>
-<button class="btn" onclick="showLogin()">Register</button>
-<button class="btn" onclick="loginUser()">Login</button>
-</div>
-<button class="btn" onclick="showAdmin()">Admin</button>
-</header>
+    <!-- Sticky Navbar -->
+    <nav class="sticky top-0 z-40 w-full glassmorphism border-b border-white/5 px-6 py-4 flex items-center justify-between transition-all duration-300">
+        <a href="#" class="font-heading font-extrabold text-xl tracking-tight flex items-center gap-2">
+            <span class="p-2 bg-gradient-to-br from-electricBlue to-neonGreen rounded-lg text-black text-xs font-black">VB</span>
+            <span class="text-white">Vikash Builds <span class="text-neonGreen">AI</span></span>
+        </a>
+        
+        <!-- Desktop Nav Items -->
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-400">
+            <a href="#about" class="hover:text-white transition-colors">About</a>
+            <a href="#skills" class="hover:text-white transition-colors">AI Skills</a>
+            <a href="#downloads" class="hover:text-white transition-colors">Templates</a>
+            <a href="#dashboards" class="hover:text-white transition-colors">Dashboards</a>
+            <a href="#workflows" class="hover:text-white transition-colors">Workflows</a>
+            <a href="#showcase" class="hover:text-white transition-colors">Showcase</a>
+            <a href="#services" class="hover:text-white transition-colors">Services</a>
+            <a href="#blog" class="hover:text-white transition-colors">Hub</a>
+        </div>
 
-<section class="hero">
-<h1>Smart Delivery Solutions for Bangalore 🚀</h1>
-<p>Serving shops, professionals, and individuals with fast and reliable delivery</p>
-<button class="btn" onclick="showBooking()">Start Booking</button>
-</section>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleDarkMode()" class="p-2 text-gray-400 hover:text-white transition-colors" title="Toggle Theme">
+                <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+            </button>
+            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 bg-gradient-to-r from-electricBlue to-neonGreen hover:opacity-90 text-black font-bold rounded-lg text-sm transition-transform active:scale-95">
+                Book Consultation
+            </a>
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-400 hover:text-white">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
 
-<section class="section">
-<h2>Who Can Use DoorDrop?</h2>
-<div class="grid">
-<div class="card">🥬 Vegetable Shops</div>
-<div class="card">🍱 Cloud Kitchens</div>
-<div class="card">🏪 Local Stores</div>
-<div class="card">🧾 CA & Offices</div>
-</div>
-</section>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-darkbg/95 backdrop-blur-lg flex flex-col pt-24 px-8 space-y-6 text-xl font-heading">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gray-400 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#about" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonGreen">About</a>
+        <a href="#skills" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonGreen">AI Skills</a>
+        <a href="#downloads" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonGreen">Templates</a>
+        <a href="#dashboards" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonGreen">Dashboards</a>
+        <a href="#workflows" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonGreen">Workflows</a>
+        <a href="#services" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonGreen">Services</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="px-5 py-3 bg-gradient-to-r from-electricBlue to-neonGreen text-black font-bold rounded-lg text-center">Book Consultation</a>
+    </div>
 
-<section class="section">
-<h2>Our Services</h2>
-<div class="grid">
-<div class="card">📦 Parcel Delivery</div>
-<div class="card">📄 Document Delivery</div>
-<div class="card">🍱 Food Delivery</div>
-<div class="card">⚡ Same Day Delivery</div>
-</div>
-</section>
+    <!-- 🏠 HERO SECTION -->
+    <section class="relative min-h-[90vh] flex items-center justify-center px-6 py-20 overflow-hidden">
+        <!-- Tech Matrix Glow Overlay -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-electricBlue/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neonGreen/10 rounded-full filter blur-[120px] pointer-events-none"></div>
 
-<!-- BOOKING FORM -->
-<section class="section" id="bookingBox" style="display:none;">
-<h2>Book a Delivery</h2>
-<input type="text" id="pickup" placeholder="Pickup Address"><br>
-<input type="text" id="drop" placeholder="Drop Address"><br>
-<input type="text" id="item" placeholder="Item Details"><br>
-<input type="text" id="contact" placeholder="Contact Number"><br>
-<button class="btn" onclick="submitBooking()">Submit Booking</button>
-</section>
+        <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold tracking-wider text-neonGreen uppercase">
+                    <span class="flex h-2 w-2 rounded-full bg-neonGreen animate-ping"></span> Finance + Automation Pioneer
+                </div>
+                <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                    Finance + AI + Productivity = <span class="text-gradient">Smarter Growth</span>
+                </h1>
+                <p class="text-gray-400 text-lg max-w-xl mx-auto lg:mx-0">
+                    Helping professionals use AI practically for career growth, finance, compliance, automation, and content creation.
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#downloads" class="px-5 py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-all shadow-lg shadow-white/5">Explore Templates</a>
+                    <a href="#dashboards" class="px-5 py-3 glassmorphism text-white font-semibold rounded-lg hover:border-neonGreen transition-all">Download Dashboards</a>
+                    <a href="#skills" class="px-5 py-3 text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm">Learn AI Workflows <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+                <!-- Dynamic Quick Statistics Overlay -->
+                <div class="grid grid-cols-3 gap-4 pt-8 max-w-md mx-auto lg:mx-0 border-t border-white/5">
+                    <div>
+                        <p class="font-heading font-bold text-2xl text-white">100%</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Automated Systems</p>
+                    </div>
+                    <div>
+                        <p class="font-heading font-bold text-2xl text-neonGreen">25+</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Premium Templates</p>
+                    </div>
+                    <div>
+                        <p class="font-heading font-bold text-2xl text-electricBlue">5x</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Workflow Speed</p>
+                    </div>
+                </div>
+            </div>
 
-<!-- REGISTER -->
-<section class="section" id="loginBox" style="display:none;">
-<h2>Register</h2>
-<input type="text" id="name" placeholder="Enter Name"><br>
-<input type="email" id="email" placeholder="Enter Email"><br>
-<input type="text" id="phone" placeholder="Enter Phone"><br>
-<select id="role">
-<option>Customer</option>
-<option>Rider</option>
-<option>Business</option>
-</select><br>
-<input type="password" id="password" placeholder="Create Password"><br><br>
-<button class="btn" onclick="registerUser()">Submit</button>
-</section>
+            <!-- Right Cinematic Glass UI Widget Display -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="relative w-full max-w-md aspect-square glassmorphism rounded-2xl p-6 border-white/10 overflow-hidden flex flex-col justify-between shadow-2xl shadow-black">
+                    <!-- Tech Window Matrix Headers -->
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
+                            <span class="text-xs font-mono text-gray-500 ml-2">system_core.sh</span>
+                        </div>
+                        <i class="fa-solid fa-microchip text-electricBlue animate-pulse"></i>
+                    </div>
 
-<footer>
-📞 8539979271<br>
-<button class="btn" onclick="joinGroup()">Join WhatsApp</button>
-</footer>
+                    <!-- Floating Holographic Financial & Prompt Graph simulation -->
+                    <div class="space-y-4 my-auto py-6">
+                        <div class="p-3 bg-white/5 rounded-lg border border-white/5 flex items-center justify-between transform hover:translate-x-2 transition-transform">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-neonGreen/15 rounded text-neonGreen"><i class="fa-solid fa-calculator"></i></div>
+                                <div>
+                                    <p class="text-xs text-gray-500">GST Compliance Engine</p>
+                                    <p class="text-sm font-semibold text-gray-200">Reconciliation System</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono text-neonGreen">ACTIVE</span>
+                        </div>
 
-<!-- ADMIN DASHBOARD -->
-<section class="section" id="adminBox" style="display:none;">
-<h2>Admin Dashboard</h2>
+                        <div class="p-3 bg-white/5 rounded-lg border border-white/5 flex items-center justify-between transform hover:translate-x-2 transition-transform">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-electricBlue/15 rounded text-electricBlue"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Claude-3.5 Prompt Stack</p>
+                                    <p class="text-sm font-semibold text-gray-200">MIS Report Generator</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono text-electricBlue">READY</span>
+                        </div>
 
-<div class="card">
-<h3>Total Users</h3>
-<p id="totalUsers">0</p>
-</div>
+                        <div class="p-3 bg-white/5 rounded-lg border border-white/5 flex items-center justify-between transform hover:translate-x-2 transition-transform">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-purple-500/15 rounded text-purple-400"><i class="fa-solid fa-chart-pie"></i></div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Financial Modeling Analytics</p>
+                                    <p class="text-sm font-semibold text-gray-200">Interactive Cloud Kitchen UX</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono text-purple-400">98.4% Efficiency</span>
+                        </div>
+                    </div>
 
-<div class="card">
-<h3>Total Bookings</h3>
-<p id="totalBookings">0</p>
-</div>
+                    <!-- Decorative UI Graph Elements -->
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-500">
+                        <span>🚀 Building Smarter Careers With AI</span>
+                        <span class="font-mono text-gray-400">v2.4.0-stable</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<h3>All Bookings</h3>
-<div id="bookingList"></div>
-</div>
+    <!-- 💻 ABOUT VIKASH SECTION -->
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-5 sticky top-28 space-y-4">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                    Learning. Building. Automating. Growing 🚀
+                </h2>
+                <p class="text-gray-400 leading-relaxed">
+                    With a deeply rooted background in finance and accounting, I bridge the gap between rigorous operational compliance and bleeding-edge AI system engineering. From complex GST data reconciliation frameworks to data-rich interactive dashboards and digital branding pipelines, I engineer high-efficiency productivity architecture for modern industries.
+                </p>
+                <div class="pt-4 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs text-gray-300">#FinanceTech</span>
+                    <span class="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs text-gray-300">#AIPromptOps</span>
+                    <span class="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs text-gray-300">#ComplianceAutomation</span>
+                </div>
+            </div>
 
-<div class="card">
-<h3>All Users</h3>
-<div id="userList"></div>
-</div>
-</section>
+            <!-- Animated Career Timeline & Visuals -->
+            <div class="lg:col-span-7 space-y-8 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-electricBlue before:via-neonGreen before:to-transparent pl-12">
+                <!-- Timeline Node 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-[44px] top-1 w-6 h-6 rounded-full bg-darkbg border-4 border-electricBlue flex items-center justify-center transition-transform group-hover:scale-125 z-10"></div>
+                    <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+                        Finance & Accounts Base Engine
+                    </h3>
+                    <p class="text-xs text-electricBlue uppercase tracking-wider font-semibold mb-2">Core Competency</p>
+                    <p class="text-gray-400 text-sm">
+                        Mastered full-stack enterprise data operations: advanced statement reconciliation, accounts payable/receivable (AP/AR) engineering, rigorous internal compliance audits, and advanced financial analytics.
+                    </p>
+                </div>
 
-<script>
-function showBooking(){
-document.getElementById("bookingBox").style.display="block";
-window.scrollTo(0,document.body.scrollHeight);
-}
+                <!-- Timeline Node 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-[44px] top-1 w-6 h-6 rounded-full bg-darkbg border-4 border-neonGreen flex items-center justify-center transition-transform group-hover:scale-125 z-10"></div>
+                    <h3 class="font-heading font-bold text-xl text-white">GST & Legal Compliance</h3>
+                    <p class="text-xs text-neonGreen uppercase tracking-wider font-semibold mb-2">Framework Mastery</p>
+                    <p class="text-gray-400 text-sm">
+                        Built end-to-end framework layers for error-free Indian taxation adherence, managing systematic monthly returns, multi-source vendor ledger reconciliations, and interactive MCA monitoring platforms.
+                    </p>
+                </div>
 
-function showLogin(){
-document.getElementById("loginBox").style.display="block";
-window.scrollTo(0,document.body.scrollHeight);
-}
+                <!-- Timeline Node 3 -->
+                <div class="relative group">
+                    <div class="absolute -left-[44px] top-1 w-6 h-6 rounded-full bg-darkbg border-4 border-glowCyan flex items-center justify-center transition-transform group-hover:scale-125 z-10"></div>
+                    <h3 class="font-heading font-bold text-xl text-white">AI Transformation & Dashboard Architecture</h3>
+                    <p class="text-xs text-glowCyan uppercase tracking-wider font-semibold mb-2">Current Frontier</p>
+                    <p class="text-gray-400 text-sm">
+                        Fusing classical spreadsheet environments with modern Generative AI models (ChatGPT, Claude, Gemini). Designing scalable high-fidelity custom data platforms, cloud kitchen digital architecture, and targeted content design protocols.
+                    </p>
+                    <!-- Floating Hand-written note element -->
+                    <div class="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/20 text-yellow-300 rounded-lg text-xs font-mono max-w-xs italic shadow-md">
+                        💡 "The future isn't AI replacing accountants. It's prompt-powered financial specialists scaling businesses 10x faster."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-function submitBooking(){
-let pickup=document.getElementById("pickup").value;
-let drop=document.getElementById("drop").value;
-let item=document.getElementById("item").value;
-let contact=document.getElementById("contact").value;
+    <!-- 🧠 AI SKILLS SHOWCASE -->
+    <section id="skills" class="py-24 px-6 bg-gradient-to-b from-transparent via-slate-950/40 to-transparent">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Integrated AI Skills Matrix</h2>
+                <p class="text-gray-400 text-sm">Advanced system intelligence customized specifically for professional career design, enterprise operations, and business scaling.</p>
+            </div>
 
-let bookingId="BK"+Math.floor(Math.random()*10000);
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill Card Component Template -->
+                <script>
+                    const displaySkills = [
+                        { name: "AI Prompt Engineering", desc: "Crafting bulletproof system instructions for complex workflows.", icon: "fa-terminal", type: "blue" },
+                        { name: "ChatGPT Workflows", desc: "Advanced programmatic usage for reporting and processing automation.", icon: "fa-robot", type: "green" },
+                        { name: "Claude Productivity Systems", desc: "Long-context analysis for tax codes, policy compliance, and long documentation.", icon: "fa-brain", type: "blue" },
+                        { name: "Gemini Research Usage", desc: "Leveraging multi-modal features for cross-border research and real-time data.", icon: "fa-searchengin", type: "green" },
+                        { name: "Excel Automation", desc: "Advanced custom logic macro modeling and automated multi-ledger pipelines.", icon: "fa-file-excel", type: "blue" },
+                        { name: "Finance Dashboards", desc: "Dynamic executive reporting structures displaying critical operational KPIs.", icon: "fa-chart-line", type: "green" },
+                        { name: "GST & MCA Compliance", desc: "Automating structured validation routines across commercial records.", icon: "fa-scale-balanced", type: "blue" },
+                        { name: "Resume Optimization", desc: "Algorithmic keyword optimization ensuring high performance with ATS filters.", icon: "fa-file-user", type: "green" },
+                        { name: "LinkedIn Branding", desc: "Systematic data-driven content architectures to scale engagement organic footprints.", icon: "fa-share-nodes", type: "blue" },
+                        { name: "Professional Email Writing", desc: "High-conversion structural communication templates for client negotiations.", icon: "fa-envelope-open-text", type: "green" },
+                        { name: "AI Content Creation", desc: "Producing scalable digital marketing visuals and targeted written copy.", icon: "fa-wand-magic-sparkles", type: "blue" },
+                        { name: "Cloud Kitchen Branding", desc: "Deploying high-ROI digital placement strategy blueprints for food spaces.", icon: "fa-utensils", type: "green" },
+                        { name: "Personal Productivity", desc: "Designing comprehensive custom lifecycles using structured tools.", icon: "fa-sliders", type: "blue" }
+                    ];
+                </script>
+                
+                <!-- Injected via HTML Loop Simulation for static presentation -->
+                <div class="glassmorphism rounded-xl p-5 border-white/5 neon-border-blue transition-all duration-300 group">
+                    <div class="w-10 h-10 rounded-lg bg-electricBlue/10 text-electricBlue flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-terminal"></i></div>
+                    <h4 class="font-heading font-bold text-lg text-white mb-1">AI Prompt Engineering</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Crafting high-precision contextual system instructions for multi-stage execution pipelines.</p>
+                </div>
+                <div class="glassmorphism rounded-xl p-5 border-white/5 neon-border-green transition-all duration-300 group">
+                    <div class="w-10 h-10 rounded-lg bg-neonGreen/10 text-neonGreen flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-robot"></i></div>
+                    <h4 class="font-heading font-bold text-lg text-white mb-1">ChatGPT Workflows</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Developing conversational orchestration agents for corporate accounting file assembly.</p>
+                </div>
+                <div class="glassmorphism rounded-xl p-5 border-white/5 neon-border-blue transition-all duration-300 group">
+                    <div class="w-10 h-10 rounded-lg bg-electricBlue/10 text-electricBlue flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-brain"></i></div>
+                    <h4 class="font-heading font-bold text-lg text-white mb-1">Claude Productivity Systems</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Utilizing specialized multi-source structures for regulatory tax documentation analysis.</p>
+                </div>
+                <div class="glassmorphism rounded-xl p-5 border-white/5 neon-border-green transition-all duration-300 group">
+                    <div class="w-10 h-10 rounded-lg bg-neonGreen/10 text-neonGreen flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h4 class="font-heading font-bold text-lg text-white mb-1">Finance Dashboards</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Engineering premium high-visibility executive trackers for core asset visibility.</p>
+                </div>
+                <div class="glassmorphism rounded-xl p-5 border-white/5 neon-border-blue transition-all duration-300 group">
+                    <div class="w-10 h-10 rounded-lg bg-electricBlue/10 text-electricBlue flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-file-excel"></i></div>
+                    <h4 class="font-heading font-bold text-lg text-white mb-1">Excel Macro Automation</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Programming lightning-fast clean routines that completely eliminate redundant input data labor.</p>
+                </div>
+                <div class="glassmorphism rounded-xl p-5 border-white/5 neon-border-green transition-all duration-300 group">
+                    <div class="w-10 h-10 rounded-lg bg-neonGreen/10 text-neonGreen flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-square-poll-vertical"></i></div>
+                    <h4 class="font-heading font-bold text-lg text-white mb-1">LinkedIn Branding Stack</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Architecting consistent high-authority personal identity loops for authority optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-let bookingData={pickup,drop,item,contact,bookingId};
+    <!-- 📊 DOWNLOAD CENTER WITH SEARCH FILTER -->
+    <section id="downloads" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div class="space-y-3">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Premium System Downloads</h2>
+                <p class="text-gray-400 text-sm">Production-ready templates, compliance engines, and structured prompt libraries built to scale operations instantly.</p>
+            </div>
+            <!-- Futuristic Filter Search Interface -->
+            <div class="relative w-full max-w-xs">
+                <input type="text" placeholder="Filter resources..." class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm font-medium focus:outline-none focus:border-neonGreen text-white placeholder-gray-500">
+                <i class="fa-solid fa-magnifying-glass absolute right-4 top-3.5 text-gray-500 text-xs"></i>
+            </div>
+        </div>
 
-let bookings=JSON.parse(localStorage.getItem("bookings")||"[]");
-bookings.push(bookingData);
-localStorage.setItem("bookings",JSON.stringify(bookings));
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Category 1: Excel Templates -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 border-b border-white/10 pb-2 text-white font-heading font-bold">
+                    <i class="fa-solid fa-file-excel text-neonGreen"></i> Excel Financial Frameworks
+                </div>
+                <div class="space-y-2">
+                    <!-- Item List Row Component -->
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">GST Input Tax Credit Calculator</span>
+                        <a href="#" class="text-neonGreen hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Income Tax Planner Tool</span>
+                        <a href="#" class="text-neonGreen hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Accounts Payable (AP) Aging Engine</span>
+                        <a href="#" class="text-neonGreen hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Bank Reconciliation Protocol (BRS)</span>
+                        <a href="#" class="text-neonGreen hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Vendor Reconciliation Automation Matrix</span>
+                        <a href="#" class="text-neonGreen hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
 
-let message=`New Booking:%0ABookingID: ${bookingId}%0APickup: ${pickup}%0ADrop: ${drop}%0AItem: ${item}%0AContact: ${contact}`;
+            <!-- Category 2: Word Communications -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 border-b border-white/10 pb-2 text-white font-heading font-bold">
+                    <i class="fa-solid fa-file-word text-electricBlue"></i> Professional Correspondence
+                </div>
+                <div class="space-y-2">
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">High-Impact ATS Entry Resume Blueprint</span>
+                        <a href="#" class="text-electricBlue hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Executive Veteran Profile Design</span>
+                        <a href="#" class="text-electricBlue hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Job Application Execution Email Text</span>
+                        <a href="#" class="text-electricBlue hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Corporate Resignation Formal Vector</span>
+                        <a href="#" class="text-electricBlue hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Critical Client Follow-up Structural Scripts</span>
+                        <a href="#" class="text-electricBlue hover:underline font-mono">DOWNLOAD <i class="fa-solid fa-download ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
 
-alert("Booking Confirmed! ID: "+bookingId);
+            <!-- Category 3: AI Prompt Libraries -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 border-b border-white/10 pb-2 text-white font-heading font-bold">
+                    <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> AI Prompt Operating System
+                </div>
+                <div class="space-y-2">
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">AI Mock Interview Training Parameters</span>
+                        <a href="#" class="text-purple-400 hover:underline font-mono">COPY PROMPT <i class="fa-solid fa-copy ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">LinkedIn Optimization Growth Formulas</span>
+                        <a href="#" class="text-purple-400 hover:underline font-mono">COPY PROMPT <i class="fa-solid fa-copy ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Cinematic Image Engine Directives (Midjourney)</span>
+                        <a href="#" class="text-purple-400 hover:underline font-mono">COPY PROMPT <i class="fa-solid fa-copy ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Taxation Analysis & Mapping Context System</span>
+                        <a href="#" class="text-purple-400 hover:underline font-mono">COPY PROMPT <i class="fa-solid fa-copy ml-1"></i></a>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-lg flex items-center justify-between border border-white/5 hover:bg-white/10 transition-all text-xs">
+                        <span class="text-gray-300 font-medium">Cloud Kitchen Market Launch Playbooks</span>
+                        <a href="#" class="text-purple-400 hover:underline font-mono">COPY PROMPT <i class="fa-solid fa-copy ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-window.open("https://wa.me/918539979271?text="+message);
-}%0ADrop: ${drop}%0AItem: ${item}%0AContact: ${contact}`;
+    <!-- 📊 DASHBOARD GALLERY SECTION -->
+    <section id="dashboards" class="py-24 px-6 bg-slate-950/50 border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">SaaS Executive Dashboard Environments</h2>
+                <p class="text-gray-400 text-sm">Ultra-modern analytical control panels crafted for real-time visibility and strategic governance mapping.</p>
+            </div>
 
-window.open("https://wa.me/918539979271?text="+message);
-}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Dashboard 1: Finance -->
+                <div class="glassmorphism rounded-xl overflow-hidden border-white/10 flex flex-col group">
+                    <div class="p-4 bg-white/5 border-b border-white/5 flex items-center justify-between">
+                        <span class="text-xs font-mono text-gray-400">FINANCE_CORE_SYS</span>
+                        <span class="w-2 h-2 rounded-full bg-neonGreen"></span>
+                    </div>
+                    <!-- Mock Interactive Graphic Space -->
+                    <div class="p-6 bg-black/40 aspect-video flex flex-col justify-between relative overflow-hidden group-hover:bg-black/20 transition-colors">
+                        <div class="flex items-end gap-1.5 h-24 items-end">
+                            <div class="w-full bg-gradient-to-t from-electricBlue to-cyan-400 h-[45%] rounded-sm"></div>
+                            <div class="w-full bg-gradient-to-t from-electricBlue to-cyan-400 h-[70%] rounded-sm"></div>
+                            <div class="w-full bg-gradient-to-t from-electricBlue to-cyan-400 h-[60%] rounded-sm"></div>
+                            <div class="w-full bg-gradient-to-t from-electricBlue to-cyan-400 h-[95%] rounded-sm"></div>
+                            <div class="w-full bg-gradient-to-t from-electricBlue to-cyan-400 h-[80%] rounded-sm"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs pt-4">
+                            <div>
+                                <p class="text-gray-500 font-mono">TOTAL REVENUE MTD</p>
+                                <p class="text-base font-bold text-white">₹24,85,900.00</p>
+                            </div>
+                            <span class="text-neonGreen bg-neonGreen/10 px-2 py-0.5 rounded text-[10px] font-mono">+14.2%</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-heading font-bold text-lg text-white">Corporate Tax & AP/AR Framework</h3>
+                            <p class="text-gray-400 text-xs mt-1">Integrates systemic GST return filing patterns, detailed vendor ledgers, and automated dynamic liquidity calculations.</p>
+                        </div>
+                        <button class="w-full mt-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-medium text-xs rounded-lg tracking-wider uppercase border border-white/10 transition-colors">Launch Interactive Preview</button>
+                    </div>
+                </div>
 
-function registerUser(){
-let name=document.getElementById("name").value;
-let email=document.getElementById("email").value;
-let phone=document.getElementById("phone").value;
-let role=document.getElementById("role").value;
-let password=document.getElementById("password").value;
+                <!-- Dashboard 2: Business KPIs -->
+                <div class="glassmorphism rounded-xl overflow-hidden border-white/10 flex flex-col group">
+                    <div class="p-4 bg-white/5 border-b border-white/5 flex items-center justify-between">
+                        <span class="text-xs font-mono text-gray-400">BIZ_OPS_MATRX</span>
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                    </div>
+                    <div class="p-6 bg-black/40 aspect-video flex flex-col justify-between relative overflow-hidden group-hover:bg-black/20 transition-colors">
+                        <div class="grid grid-cols-2 gap-4 my-auto">
+                            <div class="p-2.5 bg-white/5 rounded border border-white/5">
+                                <span class="text-[10px] font-mono text-gray-500 block">CLOUD KITCHEN ORDER VELOCITY</span>
+                                <span class="text-sm font-bold text-white">4,812 units/wk</span>
+                            </div>
+                            <div class="p-2.5 bg-white/5 rounded border border-white/5">
+                                <span class="text-[10px] font-mono text-gray-500 block">LEAD CONVERSION VALUE</span>
+                                <span class="text-sm font-bold text-purple-400">28.4% Net</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs pt-2">
+                            <div>
+                                <p class="text-gray-500 font-mono">OPERATIONAL PERFORMANCE</p>
+                                <p class="text-base font-bold text-white">Optimal Tier</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-heading font-bold text-lg text-white">Commercial Cloud Kitchen Tracker</h3>
+                            <p class="text-gray-400 text-xs mt-1">Monitors consumer sales distribution maps, automated procurement loops, delivery service efficiencies, and margin sheets.</p>
+                        </div>
+                        <button class="w-full mt-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-medium text-xs rounded-lg tracking-wider uppercase border border-white/10 transition-colors">Launch Interactive Preview</button>
+                    </div>
+                </div>
 
-let userId="DD"+Math.floor(Math.random()*10000);
+                <!-- Dashboard 3: Legal Tracker -->
+                <div class="glassmorphism rounded-xl overflow-hidden border-white/10 flex flex-col group">
+                    <div class="p-4 bg-white/5 border-b border-white/5 flex items-center justify-between">
+                        <span class="text-xs font-mono text-gray-400">LEGAL_RECON_SYS</span>
+                        <span class="w-2 h-2 rounded-full bg-electricBlue"></span>
+                    </div>
+                    <div class="p-6 bg-black/40 aspect-video flex flex-col justify-between relative overflow-hidden group-hover:bg-black/20 transition-colors">
+                        <div class="space-y-2 my-auto">
+                            <div class="flex justify-between text-[11px] font-mono text-gray-400 border-b border-white/5 pb-1">
+                                <span>Case #4092 - Status Check</span>
+                                <span class="text-amber-400">HEARING PENDING</span>
+                            </div>
+                            <div class="flex justify-between text-[11px] font-mono text-gray-400 border-b border-white/5 pb-1">
+                                <span>Compliance Filing Tier 1</span>
+                                <span class="text-neonGreen">ARCHIVED SECURELY</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs pt-4">
+                            <div>
+                                <p class="text-gray-500 font-mono">ACTIVE COUNSEL PIPELINES</p>
+                                <p class="text-base font-bold text-white">18 Live Profiles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-heading font-bold text-lg text-white">Legal Counsel Case Schedule Portal</h3>
+                            <p class="text-gray-400 text-xs mt-1">Designed exclusively for advocates to structure client tracking, dynamic schedule timelines, and corporate compliance archival metrics.</p>
+                        </div>
+                        <button class="w-full mt-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-medium text-xs rounded-lg tracking-wider uppercase border border-white/10 transition-colors">Launch Interactive Preview</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-let userData={name,email,phone,role,password,userId};
+    <!-- 🚀 HOW TO USE AI SECTION -->
+    <section id="workflows" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">The Futuristic AI Execution Protocol</h2>
+            <p class="text-gray-400 text-sm">How to map raw generative models directly to high-yield enterprise solutions in seconds.</p>
+        </div>
 
-localStorage.setItem(userId, JSON.stringify(userData));
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+            <!-- Step 1 -->
+            <div class="glassmorphism rounded-xl p-5 border-white/5 space-y-3 relative">
+                <div class="absolute -top-4 -left-2 font-heading font-black text-4xl text-white/10">01</div>
+                <div class="text-electricBlue text-lg font-bold"><i class="fa-solid fa-square-sliders"></i> Target Tool</div>
+                <p class="text-gray-400 text-xs leading-relaxed">Initialize parameters on target model layer (ChatGPT, Claude-3.5, or Gemini Core).</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="glassmorphism rounded-xl p-5 border-white/5 space-y-3 relative">
+                <div class="absolute -top-4 -left-2 font-heading font-black text-4xl text-white/10">02</div>
+                <div class="text-neonGreen text-lg font-bold"><i class="fa-solid fa-bullseye"></i> Define Objective</div>
+                <p class="text-gray-400 text-xs leading-relaxed">Select target core vector domain: Career Optimization, Tax Ledgering, or Automation.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="glassmorphism rounded-xl p-5 border-white/5 space-y-3 relative">
+                <div class="absolute -top-4 -left-2 font-heading font-black text-4xl text-white/10">03</div>
+                <div class="text-purple-400 text-lg font-bold"><i class="fa-solid fa-terminal"></i> Inject Prompt</div>
+                <p class="text-gray-400 text-xs leading-relaxed">Extract and apply highly calibrated blueprint prompts from our library engine.</p>
+            </div>
+            <!-- Step 4 -->
+            <div class="glassmorphism rounded-xl p-5 border-white/5 space-y-3 relative">
+                <div class="absolute -top-4 -left-2 font-heading font-black text-4xl text-white/10">04</div>
+                <div class="text-glowCyan text-lg font-bold"><i class="fa-solid fa-wand-magic"></i> Refine Output</div>
+                <p class="text-gray-400 text-xs leading-relaxed">Customize raw outputs using precise, domain-specific market parameters.</p>
+            </div>
+            <!-- Step 5 -->
+            <div class="glassmorphism rounded-xl p-5 border-white/5 space-y-3 relative">
+                <div class="absolute -top-4 -left-2 font-heading font-black text-4xl text-white/10">05</div>
+                <div class="text-white text-lg font-bold"><i class="fa-solid fa-circle-check"></i> Enterprise Output</div>
+                <p class="text-gray-400 text-xs leading-relaxed">Deploy structured systems directly into production to trigger immediate business velocity.</p>
+            </div>
+        </div>
+    </section>
 
-let message=`New Registration:%0AUserID: ${userId}%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ARole: ${role}`;
+    <!-- 🎨 AI CONTENT SHOWCASE -->
+    <section id="showcase" class="py-24 px-6 bg-slate-950/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Visual & Content Arts Portfolio</h2>
+                <p class="text-gray-400 text-sm">Where advanced structural synthesis matches Hollywood-level visualization art models.</p>
+            </div>
 
-alert("Registered Successfully! Your User ID: "+userId);
+            <!-- Masonry-Inspired Creative Portfolio Grid Grid Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-white/5 group border border-white/5">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 flex flex-col justify-end p-4">
+                        <span class="text-[10px] font-mono text-neonGreen uppercase tracking-widest">Structural Character Assets</span>
+                        <h4 class="text-sm font-heading font-bold text-white">Pixar-Style Professional Frameworks</h4>
+                    </div>
+                    <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-700 via-slate-900 to-black group-hover:scale-105 transition-transform duration-500"></div>
+                </div>
 
-window.open("https://wa.me/918539979271?text="+message);
-}
+                <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-white/5 group border border-white/5">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 flex flex-col justify-end p-4">
+                        <span class="text-[10px] font-mono text-electricBlue uppercase tracking-widest">Cinematic Narrative Design</span>
+                        <h4 class="text-sm font-heading font-bold text-white">Couples Digital Storytelling Mechanics</h4>
+                    </div>
+                    <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900 via-slate-900 to-black group-hover:scale-105 transition-transform duration-500"></div>
+                </div>
 
-// LOGIN SYSTEM
-function loginUser(){
-let userId=prompt("Enter User ID");
-let password=prompt("Enter Password");
+                <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-white/5 group border border-white/5">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 flex flex-col justify-end p-4">
+                        <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest">Brand Collateral Vectors</span>
+                        <h4 class="text-sm font-heading font-bold text-white">High-Impact Corporate Productivity Posters</h4>
+                    </div>
+                    <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900 via-slate-900 to-black group-hover:scale-105 transition-transform duration-500"></div>
+                </div>
 
-let data=localStorage.getItem(userId);
+                <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-white/5 group border border-white/5">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 flex flex-col justify-end p-4">
+                        <span class="text-[10px] font-mono text-glowCyan uppercase tracking-widest">Infographics Architecture</span>
+                        <h4 class="text-sm font-heading font-bold text-white">Financial Trends Visual Mappings</h4>
+                    </div>
+                    <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900 via-slate-900 to-black group-hover:scale-105 transition-transform duration-500"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-if(data){
-let user=JSON.parse(data);
-if(user.password===password){
-alert("Login Successful: "+user.name);
-}else{
-alert("Wrong Password");
-}
-}else{
-alert("User not found");
-}
-}%0AEmail: ${email}%0APhone: ${phone}%0ARole: ${role}`;
+    <!-- 💼 SERVICES SECTION -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Strategic Enterprise Services</h2>
+            <p class="text-gray-400 text-sm">Bespoke operational acceleration modules designed for modern companies and independent elite professionals.</p>
+        </div>
 
-window.open("https://wa.me/918539979271?text="+message);
-}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Service item card -->
+            <div class="p-6 rounded-xl glassmorphism border-white/5 flex flex-col justify-between space-y-4 hover:border-white/20 transition-all">
+                <div class="space-y-2">
+                    <div class="text-neonGreen text-xl"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3 class="font-heading font-bold text-lg text-white">GST & MCA Corporate Support</h3>
+                    <p class="text-gray-400 text-xs">Error-free tax processing, comprehensive automated ledger reconciliation setups, and corporate governance compliance tracking.</p>
+                </div>
+                <a href="#contact" class="text-xs font-mono text-white inline-flex items-center gap-1.5 hover:text-neonGreen transition-colors">Inquire Parameters <i class="fa-solid fa-angle-right"></i></a>
+            </div>
 
-function joinGroup(){
-window.open("https://chat.whatsapp.com/LYlochc9FKCE1vGUXscI1F");
-}
+            <div class="p-6 rounded-xl glassmorphism border-white/5 flex flex-col justify-between space-y-4 hover:border-white/20 transition-all">
+                <div class="space-y-2">
+                    <div class="text-electricBlue text-xl"><i class="fa-solid fa-objects-column"></i></div>
+                    <h3 class="font-heading font-bold text-lg text-white">Custom Analytics Dashboards</h3>
+                    <p class="text-gray-400 text-xs">Tailored executive spreadsheets and visual tracking portals optimized for clear, high-level business logic transparency.</p>
+                </div>
+                <a href="#contact" class="text-xs font-mono text-white inline-flex items-center gap-1.5 hover:text-electricBlue transition-colors">Inquire Parameters <i class="fa-solid fa-angle-right"></i></a>
+            </div>
 
-// ADMIN DASHBOARD
-function showAdmin(){
-document.getElementById("adminBox").style.display="block";
-window.scrollTo(0,document.body.scrollHeight);
+            <div class="p-6 rounded-xl glassmorphism border-white/5 flex flex-col justify-between space-y-4 hover:border-white/20 transition-all">
+                <div class="space-y-2">
+                    <div class="text-purple-400 text-xl"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3 class="font-heading font-bold text-lg text-white">AI Automation Consulting</h3>
+                    <p class="text-gray-400 text-xs">Integrating large language models directly into your business operations to completely eliminate manual, repetitive back-office work.</p>
+                </div>
+                <a href="#contact" class="text-xs font-mono text-white inline-flex items-center gap-1.5 hover:text-purple-400 transition-colors">Inquire Parameters <i class="fa-solid fa-angle-right"></i></a>
+            </div>
 
-// USERS
-let totalUsers=0;
-let userHTML="";
+            <div class="p-6 rounded-xl glassmorphism border-white/5 flex flex-col justify-between space-y-4 hover:border-white/20 transition-all">
+                <div class="space-y-2">
+                    <div class="text-glowCyan text-xl"><i class="fa-solid fa-utensils"></i></div>
+                    <h3 class="font-heading font-bold text-lg text-white">Cloud Kitchen Digital Brand Strategy</h3>
+                    <p class="text-gray-400 text-xs">Designing high-converting digital branding architectures, optimized online menu placements, and localized algorithmic search tactics.</p>
+                </div>
+                <a href="#contact" class="text-xs font-mono text-white inline-flex items-center gap-1.5 hover:text-glowCyan transition-colors">Inquire Parameters <i class="fa-solid fa-angle-right"></i></a>
+            </div>
+        </div>
+    </section>
 
-for(let key in localStorage){
-try{
-let data=JSON.parse(localStorage.getItem(key));
-if(data && data.userId){
-totalUsers++;
-userHTML+=`<p>${data.userId} - ${data.name} (${data.role})</p>`;
-}
-}catch(e){}
-}
+    <!-- 📚 LEARNING HUB / BLOG -->
+    <section id="blog" class="py-24 px-6 bg-slate-950/30 border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">The Intelligence Hub</h2>
+                <p class="text-gray-400 text-sm">Deep architectural essays revealing actionable insights across the intersection of corporate finance and system artificial intelligence.</p>
+            </div>
 
-document.getElementById("totalUsers").innerText=totalUsers;
-document.getElementById("userList").innerHTML=userHTML;
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Blog Item Post Template -->
+                <article class="p-5 rounded-xl glassmorphism border-white/5 space-y-4 group cursor-pointer hover:border-white/10 transition-all">
+                    <span class="text-[10px] font-mono text-neonGreen uppercase tracking-widest block">Operational Essays</span>
+                    <h3 class="font-heading font-bold text-lg text-white group-hover:text-neonGreen transition-colors">How Finance Professionals Can Safely Leverage Modern Generative AI Engines</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Breaking down strict methods to ingest internal company balance ledgers safely into context models without violating security protocols.</p>
+                    <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[11px] text-gray-500">
+                        <span>5 min structural read</span>
+                        <span class="font-mono text-white">READ SYSTEM <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></span>
+                    </div>
+                </article>
 
-// BOOKINGS
-let bookings=JSON.parse(localStorage.getItem("bookings")||"[]");
-document.getElementById("totalBookings").innerText=bookings.length;
+                <article class="p-5 rounded-xl glassmorphism border-white/5 space-y-4 group cursor-pointer hover:border-white/10 transition-all">
+                    <span class="text-[10px] font-mono text-electricBlue uppercase tracking-widest block">System Optimization</span>
+                    <h3 class="font-heading font-bold text-lg text-white group-hover:text-electricBlue transition-colors">High-Performance ChatGPT Prompts Formatted for Corporate Job Search Execution</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">A complete guide to advanced multi-turn prompt matrices that program text models to mirror the behavior of experienced executive recruiters.</p>
+                    <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[11px] text-gray-500">
+                        <span>4 min structural read</span>
+                        <span class="font-mono text-white">READ SYSTEM <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></span>
+                    </div>
+                </article>
 
-let bookingHTML="";
-bookings.forEach(b=>{
-bookingHTML+=`<p>${b.bookingId} - ${b.pickup} → ${b.drop}</p>`;
-});
+                <article class="p-5 rounded-xl glassmorphism border-white/5 space-y-4 group cursor-pointer hover:border-white/10 transition-all">
+                    <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block">Tax Automation</span>
+                    <h3 class="font-heading font-bold text-lg text-white group-hover:text-purple-400 transition-colors">Simplifying GST Data Structuring: Combining Advanced Excel Macros with AI Models</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">How to easily convert complex multi-source purchase registers into beautifully organized data sets without any manual entry.</p>
+                    <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[11px] text-gray-500">
+                        <span>7 min structural read</span>
+                        <span class="font-mono text-white">READ SYSTEM <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-document.getElementById("bookingList").innerHTML=bookingHTML;
-}
-</script>
+    <!-- 📞 CONTACT SECTION -->
+    <section id="contact" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5 relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-electricBlue/5 to-neonGreen/5 rounded-2xl filter blur-3xl pointer-events-none"></div>
+        
+        <div class="glassmorphism rounded-2xl p-8 md:p-12 border-white/10 space-y-8 relative z-10">
+            <div class="text-center space-y-2">
+                <h2 class="font-heading font-black text-3xl text-white">Initialize System Integration</h2>
+                <p class="text-gray-400 text-sm">Let's build advanced financial structures, custom analytics dashboards, or scalable automated workflows together.</p>
+            </div>
 
+            <!-- Form Matrix Layer -->
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Transmission Received Successfully!');">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] font-mono uppercase tracking-wider text-gray-400">Identified Name</label>
+                        <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-electricBlue text-white">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] font-mono uppercase tracking-wider text-gray-400">Secure Transmission Email</label>
+                        <input type="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-electricBlue text-white">
+                    </div>
+                </div>
+                <div class="space-y-1.5">
+                    <label class="text-[11px] font-mono uppercase tracking-wider text-gray-400">Operational Focus Area</label>
+                    <select class="w-full bg-darkbg border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-electricBlue text-gray-300">
+                        <option>Advanced Enterprise Financial Dashboards Architecture</option>
+                        <option>GST / Compliance Workflow Structuring</option>
+                        <option>Generative AI Automation Systems Integration</option>
+                        <option>Cloud Kitchen Strategic Digital Identity Mapping</option>
+                        <option>Other Operational Acceleration Request</option>
+                    </select>
+                </div>
+                <div class="space-y-1.5">
+                    <label class="text-[11px] font-mono uppercase tracking-wider text-gray-400">Project Parameters Definition</label>
+                    <textarea rows="4" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-electricBlue text-white placeholder-gray-600" placeholder="Describe the system bottleneck or project goal..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-electricBlue to-neonGreen hover:opacity-90 text-black font-extrabold text-sm tracking-wider uppercase rounded-lg transition-transform active:scale-[0.99]">
+                    Transmit Integration Pipeline Request
+                </button>
+            </form>
+
+            <!-- Brand Contact Info Footer Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-white/5 text-center text-xs">
+                <div>
+                    <p class="text-gray-500 uppercase font-mono">Principal Architect</p>
+                    <p class="text-white font-semibold mt-0.5">Vikash Pathak</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 uppercase font-mono">Strategic Base Location</p>
+                    <p class="text-white font-semibold mt-0.5">Bangalore, India — Available Globally</p>
+                </div>
+                <!-- Premium Creator Social Connection Elements -->
+                <div class="flex justify-center gap-3 items-center pt-2 sm:pt-0">
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white text-sm transition-colors" title="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white text-sm transition-colors" title="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white text-sm transition-colors" title="WhatsApp Business Interface"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM ANIMATED FOOTER -->
+    <footer class="border-t border-white/5 bg-black/40 py-8 px-6 text-center text-xs text-gray-500 font-mono space-y-2">
+        <p class="font-heading text-sm text-gray-300 font-bold">Built For Professionals Who Want To Grow Smarter 🚀</p>
+        <p>&copy; 2026 Vikash Builds AI. All operational architectures reserved securely across international digital vectors.</p>
+    </footer>
+
+    <!-- FLOATING HOLOGRAPHIC WHATSAPP QUICK-LINK WIDGET -->
+    <a href="https://wa.me/#" target="_blank" class="fixed bottom-6 right-6 z-50 p-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95" title="Initiate Instant Operational Patch via WhatsApp">
+        <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+    </a>
+
+    <!-- UI MECHANICS CONTROL SCRIPTS -->
+    <script>
+        // System Core Loader Clear Routine
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 700);
+            }, 500);
+        });
+
+        // Mobile Menu Toggling Routine
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Light Mode Simulation Routine
+        function toggleDarkMode() {
+            alert('Core Interface Layer is permanently locked to Dark Modern Cyber Aesthetic mode for visual optimization protection.');
+        }
+    </script>
 </body>
 </html>
