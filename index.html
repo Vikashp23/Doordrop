@@ -1,1044 +1,587 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vikash Builds AI | Premium AI Productivity Platform</title>
-    <meta name="description" content="AI + Finance + Productivity + Career Growth. High-performance templates, dashboards, and automated system prompts engineered by Vikash Pathak.">
-    <!-- Tailwind CSS CDN -->
+    <meta name="description" content="AI + Finance + Productivity + Career Growth workflows engineered for corporate professionals, creators, and business owners.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        heading: ['Space Grotesk', 'sans-serif'],
-                    },
                     colors: {
-                        darkbg: '#030712',
-                        darksurface: '#060B18',
-                        cyberCyan: '#06B6D4',
-                        growthGreen: '#10B981',
-                        premiumPurple: '#A855F7'
+                        cyberDark: '#030712',
+                        cyberCard: 'rgba(11, 15, 25, 0.7)',
+                        neonBlue: '#38bdf8',
+                        neonGreen: '#22c55e',
                     }
                 }
             }
         }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body {
-            background-color: #030712;
-            color: #F3F4F6;
-            overflow-x: hidden;
-        }
-        .glasscard {
-            background: rgba(15, 23, 42, 0.45);
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', sans-serif; }
+        .glass-card {
+            background: rgba(11, 15, 25, 0.65);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.07);
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #06B6D4 0%, #10B981 50%, #A855F7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* Continuous glowing scanline simulation */
-        .scanline::before {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-        }
-        /* Custom animated timeline rail */
-        .timeline-glow {
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
-        }
-        /* Custom Masonry adjustments */
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1rem;
-        }
-        /* Smooth Scrollbars */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #06B6D4; }
+        .neon-glow-blue:hover { box-shadow: 0 0 25px rgba(56, 189, 248, 0.2); }
+        .neon-glow-green:hover { box-shadow: 0 0 25px rgba(34, 197, 24, 0.15); }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-cyberCyan selection:text-black">
+<body class="bg-cyberDark text-gray-200 antialiased selection:bg-neonBlue selection:text-black">
 
-    <!-- 🪐 QUANTUM SYSTEM LOADING MATRIX -->
-    <div id="system-loader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-darkbg transition-opacity duration-700">
-        <div class="relative w-28 h-28 flex items-center justify-center">
-            <div class="absolute inset-0 rounded-full border-2 border-t-cyberCyan border-r-transparent border-b-growthGreen border-l-transparent animate-spin" style="animation-duration: 1.5s;"></div>
-            <div class="absolute w-20 h-20 rounded-full border border-t-transparent border-r-premiumPurple border-b-transparent border-l-white/20 animate-spin" style="animation-direction: reverse; animation-duration: 1s;"></div>
-            <span class="font-heading font-black text-sm tracking-widest text-white">V_B_AI</span>
-        </div>
-        <div class="mt-6 text-center">
-            <p class="font-mono text-xs text-gray-500 tracking-widest uppercase">Mounting Core Security Sub-routines</p>
-            <p id="loader-stats" class="font-mono text-[10px] text-cyberCyan mt-1">Status: Operational (2026.55)</p>
-        </div>
-    </div>
-
-    <!-- 🛰️ PLATFORM STICKY NAVIGATION LAYER -->
-    <nav class="sticky top-0 z-40 w-full glasscard border-b border-white/5 px-6 lg:px-12 py-4 flex items-center justify-between transition-all duration-300">
-        <a href="#" class="font-heading font-extrabold text-lg tracking-tight flex items-center gap-2.5">
-            <span class="px-2 py-1 bg-gradient-to-br from-cyberCyan to-growthGreen rounded-md text-black text-xs font-black tracking-tighter">VB_AI</span>
-            <span class="text-white">Vikash Builds <span class="text-cyberCyan">AI</span></span>
-        </a>
-        
-        <!-- Center Desktop Controls Matrix -->
-        <div class="hidden lg:flex items-center gap-8 text-xs font-mono uppercase tracking-wider text-gray-400">
-            <a href="#about" class="hover:text-white transition-colors">01 // Identity</a>
-            <a href="#skills" class="hover:text-white transition-colors">02 // Matrix</a>
-            <a href="#downloads" class="hover:text-white transition-colors">03 // Resources</a>
-            <a href="#dashboards" class="hover:text-white transition-colors">04 // Analytics</a>
-            <a href="#workflows" class="hover:text-white transition-colors">05 // Protocol</a>
-            <a href="#showcase" class="hover:text-white transition-colors">06 // Portfolio</a>
-            <a href="#services" class="hover:text-white transition-colors">07 // Modules</a>
-        </div>
-
-        <!-- System Theme Toggles & Access Triggers -->
-        <div class="flex items-center gap-4">
-            <button onclick="toggleAestheticMode()" class="p-2 text-gray-400 hover:text-white transition-colors" title="Toggle Theme Parameter">
-                <i class="fa-solid fa-bolt-lightning text-sm"></i>
-            </button>
-            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 bg-gradient-to-r from-cyberCyan to-growthGreen hover:opacity-90 text-black font-heading font-bold text-xs rounded-lg transition-all transform active:scale-95 shadow-md shadow-cyberCyan/10">
-                Initialize System Intake
+    <nav class="sticky top-0 z-50 glass-card border-b border-gray-900 px-6 py-4 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonGreen mono">
+                VIKASH BUILDS AI
             </a>
-            <button onclick="toggleDrawerMenu()" class="lg:hidden text-gray-400 hover:text-white">
-                <i class="fa-solid fa-chart-simple rotate-90 text-lg"></i>
-            </button>
+            <div class="hidden lg:flex space-x-7 text-xs uppercase font-semibold tracking-wider text-gray-400">
+                <a href="#about" class="hover:text-neonBlue transition">About</a>
+                <a href="#skills" class="hover:text-neonBlue transition">Skills</a>
+                <a href="#downloads" class="hover:text-neonGreen transition">Downloads</a>
+                <a href="#dashboards" class="hover:text-neonGreen transition">Dashboards</a>
+                <a href="#workflows" class="hover:text-neonBlue transition">Workflows</a>
+                <a href="#gallery" class="hover:text-neonBlue transition">Gallery</a>
+                <a href="#services" class="hover:text-neonGreen transition">Services</a>
+            </div>
+            <a href="#contact" class="px-5 py-2.5 text-xs font-bold uppercase tracking-widest border border-neonBlue rounded text-neonBlue hover:bg-neonBlue hover:text-black transition duration-300">
+                Get Consultation
+            </a>
         </div>
     </nav>
 
-    <!-- MOBILE CONTROL INTERFACE DRAWER -->
-    <div id="mobile-drawer" class="hidden fixed inset-0 z-40 bg-darkbg/98 backdrop-blur-xl flex flex-col pt-24 px-8 space-y-6 text-base font-heading tracking-wide border-l border-white/5">
-        <button onclick="toggleDrawerMenu()" class="absolute top-6 right-6 text-gray-500 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
-        <a href="#about" onclick="toggleDrawerMenu()" class="text-gray-400 hover:text-cyberCyan border-b border-white/5 pb-2">01 // Personal Archetype</a>
-        <a href="#skills" onclick="toggleDrawerMenu()" class="text-gray-400 hover:text-cyberCyan border-b border-white/5 pb-2">02 // Core Skills Matrix</a>
-        <a href="#downloads" onclick="toggleDrawerMenu()" class="text-gray-400 hover:text-cyberCyan border-b border-white/5 pb-2">03 // Download Center</a>
-        <a href="#dashboards" onclick="toggleDrawerMenu()" class="text-gray-400 hover:text-cyberCyan border-b border-white/5 pb-2">04 // Dashboard Previews</a>
-        <a href="#workflows" onclick="toggleDrawerMenu()" class="text-gray-400 hover:text-cyberCyan border-b border-white/5 pb-2">05 // AI Workflows</a>
-        <a href="#showcase" onclick="toggleDrawerMenu()" class="text-gray-400 hover:text-cyberCyan border-b border-white/5 pb-2">06 // Content Showcase</a>
-        <a href="#services" onclick="toggleDrawerMenu()" class="text-gray-400 hover:text-cyberCyan border-b border-white/5 pb-2">07 // Premium Services</a>
-        <a href="#contact" onclick="toggleDrawerMenu()" class="w-full py-3 bg-gradient-to-r from-cyberCyan to-growthGreen text-black font-bold rounded-lg text-center text-sm uppercase font-mono tracking-wider">Initialize Intake</a>
-    </div>
-
-    <!-- 1. 🌌 PLATFORM HERO CONTROL ROOM -->
-    <section class="relative min-h-[92vh] flex items-center justify-center px-6 lg:px-16 py-12 overflow-hidden">
-        <!-- Interactive Node Light Effects -->
-        <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-cyberCyan/10 rounded-full filter blur-[140px] pointer-events-none animate-pulse"></div>
-        <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-premiumPurple/10 rounded-full filter blur-[140px] pointer-events-none animate-pulse" style="animation-duration: 4s;"></div>
-
-        <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-            <!-- Left Narrative Structural Matrix -->
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono tracking-wider text-growthGreen">
-                    <span class="flex h-2 w-2 rounded-full bg-growthGreen animate-ping"></span> ARCHITECTURE ACTIVE // V2.6
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-6">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(56,189,248,0.07),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full py-12">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-900/80 border border-gray-800 text-xs text-neonBlue font-medium">
+                    <span class="flex h-2 w-2 rounded-full bg-neonBlue animate-pulse"></span> Next-Gen Automated Intelligence Modules
                 </div>
-                <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08]">
-                    Building Smarter <br class="hidden sm:inline">Careers With <span class="text-gradient">AI 🚀</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-none text-white">
+                    Building Smarter Careers <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonGreen">With AI 🚀</span>
                 </h1>
-                <p class="font-heading text-lg font-medium text-gray-400 tracking-wide">
+                <h2 class="text-lg md:text-xl font-medium text-gray-400 font-mono tracking-wide">
                     AI + Finance + Productivity + Career Growth
-                </p>
-                <p class="text-gray-400 text-sm max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    Helping modern professionals apply practical artificial intelligence frameworks to supercharge career growth, automate finance, optimize compliance, and build high-ticket content workflows.
-                </p>
-                
-                <!-- Premium SaaS CTA Interactions -->
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-                    <a href="#downloads" class="px-6 py-3 bg-white text-black font-heading font-bold rounded-lg hover:bg-cyan-400 hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all duration-300 transform-gpu hover:-translate-y-0.5 text-xs uppercase tracking-wider">
-                        Explore System Templates
-                    </a>
-                    <a href="#dashboards" class="px-6 py-3 glasscard text-white font-mono font-medium rounded-lg border border-white/10 hover:border-growthGreen transition-all duration-300 text-xs tracking-wide">
-                        SYS_INIT_PROMPTS
-                    </a>
-                </div>
-
-                <!-- Animated Live Statistics Feed -->
-                <div class="grid grid-cols-3 gap-6 pt-10 max-w-md mx-auto lg:mx-0 border-t border-white/5">
-                    <div>
-                        <p class="font-heading font-bold text-2xl text-white tracking-tight" id="count-automation">0</p>
-                        <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mt-1">Calculated Speedup</p>
-                    </div>
-                    <div>
-                        <p class="font-heading font-bold text-2xl text-growthGreen tracking-tight" id="count-templates">0</p>
-                        <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mt-1">Premium Modules</p>
-                    </div>
-                    <div>
-                        <p class="font-heading font-bold text-2xl text-cyberCyan tracking-tight" id="count-efficiency">0</p>
-                        <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mt-1">Accuracy Index</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Cinematic Glass UI Dashboard Display -->
-            <div class="lg:col-span-5 relative flex justify-center transform-gpu">
-                <div class="scanline relative w-full max-w-md aspect-[4/4.2] glasscard rounded-2xl p-6 border-white/10 flex flex-col justify-between shadow-2xl shadow-black/80 group hover:border-cyberCyan/30 transition-all duration-500">
-                    <div class="flex items-center justify-between border-b border-white/5 pb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/60"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/60"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/60"></span>
-                            <span class="text-[10px] font-mono text-gray-500 ml-2">platform_core.sys</span>
-                        </div>
-                        <i class="fa-solid fa-microchip text-cyberCyan animate-pulse text-sm"></i>
-                    </div>
-
-                    <!-- Floating Holographic Component Feeds -->
-                    <div class="space-y-4 my-auto py-6">
-                        <div class="p-3 bg-white/[0.02] rounded-xl border border-white/5 flex items-center justify-between group-hover:bg-white/[0.04] transition-colors">
-                            <div class="flex items-center gap-3">
-                                <div class="p-2 bg-cyberCyan/10 rounded-lg text-cyberCyan text-xs"><i class="fa-solid fa-calculator"></i></div>
-                                <div>
-                                    <p class="text-[10px] font-mono text-gray-500">AUTOMATED ENGINE</p>
-                                    <p class="text-xs font-bold text-gray-200">GST Input Ledger Reconciliation</p>
-                                </div>
-                            </div>
-                            <span class="text-[9px] font-mono px-1.5 py-0.5 bg-growthGreen/10 text-growthGreen rounded">ACTIVE</span>
-                        </div>
-
-                        <div class="p-3 bg-white/[0.02] rounded-xl border border-white/5 flex items-center justify-between group-hover:bg-white/[0.04] transition-colors">
-                            <div class="flex items-center gap-3">
-                                <div class="p-2 bg-premiumPurple/10 rounded-lg text-premiumPurple text-xs"><i class="fa-solid fa-terminal"></i></div>
-                                <div>
-                                    <p class="text-[10px] font-mono text-gray-500">CONTEXT PROMPT CAPABILITY</p>
-                                    <p class="text-xs font-bold text-gray-200">Claude-3.5 Corporate MIS Pipeline</p>
-                                </div>
-                            </div>
-                            <span class="text-[9px] font-mono px-1.5 py-0.5 bg-cyberCyan/10 text-cyberCyan rounded">DEPLOYED</span>
-                        </div>
-
-                        <div class="p-3 bg-white/[0.02] rounded-xl border border-white/5 flex items-center justify-between group-hover:bg-white/[0.04] transition-colors">
-                            <div class="flex items-center gap-3">
-                                <div class="p-2 bg-growthGreen/10 rounded-lg text-growthGreen text-xs"><i class="fa-solid fa-utensils"></i></div>
-                                <div>
-                                    <p class="text-[10px] font-mono text-gray-500">DIGITAL ARCHITECTURE</p>
-                                    <p class="text-xs font-bold text-gray-200">Cloud Kitchen Local SEO Scaling</p>
-                                </div>
-                            </div>
-                            <span class="text-[9px] font-mono text-purple-400">99.8% Sync</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-4 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-gray-500">
-                        <span>⚡ TOKENS CONSUMED: NOMINAL</span>
-                        <span>v2.6.0 // STABLE</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. 💻 STYLED BRAND STORYTELLING (ABOUT) SECTION -->
-    <section id="about" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div class="lg:col-span-5 lg:sticky lg:top-28 space-y-4">
-                <div class="text-xs font-mono text-cyberCyan uppercase tracking-widest">01 // Architectural Heritage</div>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white leading-tight">
-                    Learning. Building. Automating. Growing 🚀
                 </h2>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    With over 6.5 years of experience in corporate financial operations and commercial compliance, I bridge the gap between traditional asset verification and advanced artificial intelligence engineering. 
+                <p class="text-sm md:text-base text-gray-400 max-w-xl leading-relaxed">
+                    Transforming standard enterprise processes through prompt-engineered systems, interactive accounting dashboards, and tailored algorithmic growth frameworks.
                 </p>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    I build pristine automation environments, custom analytical pipelines, dynamic enterprise models, and digital brand frameworks to free professionals from manual, repetitive work.
-                </p>
-                <div class="pt-4 flex flex-wrap gap-2">
-                    <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5 font-mono text-[10px] text-gray-400">#FintechArchitecture</span>
-                    <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5 font-mono text-[10px] text-gray-400">#LLMContextOps</span>
-                    <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5 font-mono text-[10px] text-gray-400">#ProductivitySystems</span>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#downloads" class="px-6 py-3.5 bg-gradient-to-r from-neonBlue to-cyan-500 text-black font-bold rounded shadow-lg transition transform hover:-translate-y-0.5 text-sm">Explore Templates</a>
+                    <a href="#dashboards" class="px-6 py-3.5 glass-card border border-gray-800 text-white font-semibold rounded hover:border-neonGreen transition transform hover:-translate-y-0.5 text-sm">Download Dashboards</a>
                 </div>
-            </div>
-
-            <!-- Animated Core Journey Rails -->
-            <div class="lg:col-span-7 space-y-8 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-cyberCyan before:via-growthGreen before:to-transparent pl-12">
-                <!-- Node Entry 1 -->
-                <div class="relative group transform-gpu transition-all duration-300 hover:translate-x-1">
-                    <div class="absolute -left-[44px] top-1 w-5 h-5 rounded-full bg-darkbg border-4 border-cyberCyan timeline-glow z-10"></div>
-                    <span class="text-[10px] font-mono text-cyberCyan uppercase tracking-widest block">Phase Alpha // Core Financial Infrastructure</span>
-                    <h3 class="font-heading font-bold text-lg text-white mt-0.5">Finance, Accounts & Reconciliation Engine</h3>
-                    <p class="text-gray-400 text-xs mt-2 leading-relaxed">
-                        Mastered enterprise finance operations: multi-ledger statements, advanced accounts payable/receivable mapping, internal banking cash flows, and rigorous financial audit verification pipelines.
-                    </p>
-                </div>
-
-                <!-- Node Entry 2 -->
-                <div class="relative group transform-gpu transition-all duration-300 hover:translate-x-1">
-                    <div class="absolute -left-[44px] top-1 w-5 h-5 rounded-full bg-darkbg border-4 border-growthGreen timeline-glow z-10"></div>
-                    <span class="text-[10px] font-mono text-growthGreen uppercase tracking-widest block">Phase Beta // National Compliance Engineering</span>
-                    <h3 class="font-heading font-bold text-lg text-white mt-0.5">GST Return Execution & MCA Framework Compliance</h3>
-                    <p class="text-gray-400 text-xs mt-2 leading-relaxed">
-                        Engineered validation models to handle Indian indirect tax compliance (GST), systematic monthly documentation returns, corporate filing audits, and ledger reconciliation checks.
-                    </p>
-                </div>
-
-                <!-- Node Entry 3 -->
-                <div class="relative group transform-gpu transition-all duration-300 hover:translate-x-1">
-                    <div class="absolute -left-[44px] top-1 w-5 h-5 rounded-full bg-darkbg border-4 border-premiumPurple timeline-glow z-10"></div>
-                    <span class="text-[10px] font-mono text-premiumPurple uppercase tracking-widest block">Phase Gamma // Current Frontier Deployment</span>
-                    <h3 class="font-heading font-bold text-lg text-white mt-0.5">Custom Dashboard Architecture & Automated AI Branding Support</h3>
-                    <p class="text-gray-400 text-xs mt-2 leading-relaxed">
-                        Fusing traditional spreadsheets with generative AI capabilities (ChatGPT, Claude, Gemini). Designing actionable executive trackers, cloud kitchen brand systems, and automated resume optimizations.
-                    </p>
-                    <!-- Floating Cursive Insight Node -->
-                    <div class="mt-4 p-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-lg text-xs font-mono italic max-w-sm shadow-lg">
-                        ⚡ "AI will not replace traditional financial analysts; however, analysts who wield high-fidelity prompt engineering will scale past competitors instantly."
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. 🧠 STYLED CORE SKILLS MATRIX SECTION -->
-    <section id="skills" class="py-24 px-6 bg-gradient-to-b from-transparent via-slate-950/30 to-transparent border-t border-white/5">
-        <div class="max-w-7xl mx-auto space-y-12">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <span class="text-xs font-mono text-cyberCyan uppercase tracking-widest">02 // Capability Layers</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Integrated AI Skills Matrix</h2>
-                <p class="text-gray-400 text-sm">Advanced system intelligence customized specifically for professional career design, enterprise operations, and business scaling.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <!-- Skill Card Component Core Layout -->
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-cyberCyan/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-cyberCyan/10 text-cyberCyan flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-solid fa-terminal"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">AI Prompt Engineering</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Crafting production-grade contextual instructions for multi-stage large language model reasoning tracks.</p>
-                </div>
-
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-growthGreen/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-growthGreen/10 text-growthGreen flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-solid fa-chart-pie"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">Finance Dashboards</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Engineering high-impact, clean tracking environments for instant visibility into critical business metrics.</p>
-                </div>
-
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-cyberCyan/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-cyberCyan/10 text-cyberCyan flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-solid fa-scale-balanced"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">GST & MCA Tools</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Automating systematic data consolidation checks to cross-verify national indirect tax ledgers.</p>
-                </div>
-
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-premiumPurple/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-premiumPurple/10 text-premiumPurple flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-solid fa-file-excel"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">Excel Automation</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Programming optimized, fast formulas and macro calculations to completely eliminate human data entry labor.</p>
-                </div>
-
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-growthGreen/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-growthGreen/10 text-growthGreen flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-solid fa-file-user"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">Resume Optimization</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Tailoring formatting structures and keyword layouts to score highly with automated corporate ATS filters.</p>
-                </div>
-
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-cyberCyan/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-cyberCyan/10 text-cyberCyan flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">AI Content Creation</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Generating premium marketing copy, customized graphic visuals, and social outreach pipelines.</p>
-                </div>
-
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-premiumPurple/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-premiumPurple/10 text-premiumPurple flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-solid fa-sliders"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">Productivity Systems</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Structuring day-to-day work systems with organized trackers to protect your most valuable asset: time.</p>
-                </div>
-
-                <div class="glasscard p-5 rounded-xl border-white/5 hover:border-growthGreen/40 transform-gpu hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-lg bg-growthGreen/10 text-growthGreen flex items-center justify-center text-base mb-4 group-hover:scale-105 transition-transform"><i class="fa-brands fa-linkedin"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white mb-1">LinkedIn Optimization</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Building consistent, high-authority personal content profiles to attract inbound organic business leads.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. 📊 PREMIUM RESOURCE DOWNLOAD CENTER (WITH FUZZY SEARCH FUNCTION) -->
-    <section id="downloads" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div class="space-y-3">
-                <span class="text-xs font-mono text-cyberCyan uppercase tracking-widest">03 // Storage Matrix</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Premium System Downloads</h2>
-                <p class="text-gray-400 text-sm">Instant deployment templates, automated calculators, and verified prompt frameworks built for active operations.</p>
             </div>
             
-            <!-- Real-Time Interactive Search Processing Console -->
-            <div class="relative w-full max-w-xs">
-                <input type="text" id="resource-search" oninput="executeResourceFilter()" placeholder="Filter resources in real-time..." class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-xs font-mono tracking-wide focus:outline-none focus:border-cyberCyan text-white placeholder-gray-500">
-                <i class="fa-solid fa-bolt absolute right-4 top-3 text-gray-600 text-xs animate-pulse"></i>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Column 1: Financial Calculators -->
-            <div class="space-y-4 resource-category-block">
-                <div class="flex items-center gap-2 border-b border-white/10 pb-2 font-heading font-bold text-sm text-white">
-                    <i class="fa-solid fa-file-excel text-growthGreen"></i> Finance Trackers & Ledgers
-                </div>
-                <div class="space-y-2.5" id="group-finance">
-                    <!-- Component Row Layer -->
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="gst reconciliation input audit calculator tracker">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">GST Verification Input Ledger</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/10 text-cyberCyan uppercase border border-cyan-500/10">FREE RESOURCE</span>
+            <div class="relative flex justify-center items-center">
+                <div class="absolute w-80 h-80 bg-neonBlue/5 rounded-full blur-3xl -top-10 -right-10"></div>
+                <div class="glass-card p-6 rounded-2xl border border-gray-800/80 w-full max-w-lg neon-glow-blue transform hover:scale-[1.01] transition duration-500">
+                    <div class="flex justify-between items-center border-b border-gray-800/60 pb-4 mb-4">
+                        <div class="flex space-x-1.5">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
                         </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-growthGreen hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
+                        <span class="text-[11px] text-gray-500 font-mono">vikash_ai_workspace.sh</span>
                     </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="accounts payable ap aging engine analyzer">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">Accounts Payable (AP) Aging Matrix</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-500/10 text-premiumPurple uppercase border border-premiumPurple/10">PREMIUM</span>
+                    <div class="space-y-3 font-mono text-xs text-gray-400">
+                        <p class="text-neonGreen">&gt;&gt; boot_ai_system --target finance_productivity</p>
+                        <p class="text-neonBlue">[SUCCESS] Prompt Optimization Library Connected.</p>
+                        <p class="text-gray-300">[PROMPT] "Analyze variance metrics across GSTR-2B ledger data..."</p>
+                        <div class="h-36 bg-gray-950/90 rounded-xl border border-gray-800 flex flex-col items-center justify-center p-4">
+                            <i class="fa-solid fa-chart-network text-2xl text-neonGreen mb-2 animate-pulse"></i>
+                            <span class="text-gray-400 text-[11px] uppercase tracking-widest">Excel Automation Pipeline Active</span>
+                            <span class="text-[10px] text-gray-600 mt-1">System Load: Stable // Latency: 4ms</span>
                         </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-growthGreen hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="accounts receivable ar control ledger tracker">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">Accounts Receivable (AR) Control Tracker</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/10 text-cyberCyan uppercase border border-cyan-500/10">FREE RESOURCE</span>
-                        </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-growthGreen hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="corporate salary payroll sheet automated matrix">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">Corporate Payroll & Salary Calculator</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-500/10 text-premiumPurple uppercase border border-premiumPurple/10">PREMIUM</span>
-                        </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-growthGreen hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="bank reconciliation format statement brs">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">Bank Reconciliation Statement (BRS) Engine</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/10 text-cyberCyan uppercase border border-cyan-500/10">FREE RESOURCE</span>
-                        </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-growthGreen hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Column 2: Career Strategy Word Files -->
-            <div class="space-y-4 resource-category-block">
-                <div class="flex items-center gap-2 border-b border-white/10 pb-2 font-heading font-bold text-sm text-white">
-                    <i class="fa-solid fa-file-word text-cyberCyan"></i> Career Correspondence
-                </div>
-                <div class="space-y-2.5" id="group-resumes">
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="fresher Entry level structural resume blueprint template">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">ATS Entry-Level Structural Blueprint</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/10 text-cyberCyan uppercase border border-cyan-500/10">FREE RESOURCE</span>
-                        </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-cyberCyan hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="experienced veteran executive profile management resume layout">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">Executive Veteran CV Architecture</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-500/10 text-premiumPurple uppercase border border-premiumPurple/10">PREMIUM</span>
-                        </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-cyberCyan hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="high conversion job application follow up email script format">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">High-Conversion Application Letters</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/10 text-cyberCyan uppercase border border-cyan-500/10">FREE RESOURCE</span>
-                        </div>
-                        <button class="download-trigger-btn font-mono text-[10px] text-cyberCyan hover:underline uppercase tracking-wider">EXTRACT <i class="fa-solid fa-download ml-1"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Column 3: Professional Prompt Libraries -->
-            <div class="space-y-4 resource-category-block">
-                <div class="flex items-center gap-2 border-b border-white/10 pb-2 font-heading font-bold text-sm text-white">
-                    <i class="fa-solid fa-wand-magic-sparkles text-premiumPurple"></i> Calibrated Prompt Libraries
-                </div>
-                <div class="space-y-2.5" id="group-prompts">
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="chatgpt advanced system engineering analytics prompts pack">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">ChatGPT Advanced Analytics Matrix</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/10 text-cyberCyan uppercase border border-cyan-500/10">FREE RESOURCE</span>
-                        </div>
-                        <button class="prompt-copy-btn font-mono text-[10px] text-premiumPurple hover:underline uppercase tracking-wider">COPY PIPELINE <i class="fa-solid fa-copy ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="gemini long context multimodal compliance reporting parameters prompts">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">Gemini Research Parameter Stacks</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-500/10 text-premiumPurple uppercase border border-premiumPurple/10">PREMIUM</span>
-                        </div>
-                        <button class="prompt-copy-btn font-mono text-[10px] text-premiumPurple hover:underline uppercase tracking-wider">COPY PIPELINE <i class="fa-solid fa-copy ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="ai interview training response coach prompt simulator">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">AI Mock Recruitment Simulator</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/10 text-cyberCyan uppercase border border-cyan-500/10">FREE RESOURCE</span>
-                        </div>
-                        <button class="prompt-copy-btn font-mono text-[10px] text-premiumPurple hover:underline uppercase tracking-wider">COPY PIPELINE <i class="fa-solid fa-copy ml-1"></i></button>
-                    </div>
-
-                    <div class="resource-card p-3.5 bg-white/[0.02] rounded-lg flex items-center justify-between border border-white/5 hover:border-white/10 transition-all text-xs" data-name="midjourney cinematic image generation engine visual prompts asset">
-                        <div class="space-y-1">
-                            <span class="text-gray-200 font-medium block">Midjourney Cinematic Asset Prompts</span>
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-500/10 text-premiumPurple uppercase border border-premiumPurple/10">PREMIUM</span>
-                        </div>
-                        <button class="prompt-copy-btn font-mono text-[10px] text-premiumPurple hover:underline uppercase tracking-wider">COPY PIPELINE <i class="fa-solid fa-copy ml-1"></i></button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. 📊 DYNAMIC SAAS ANALYTICS & INTERACTIVE DASHBOARD ENVIRONMENT -->
-    <section id="dashboards" class="py-24 px-6 bg-slate-950/60 border-t border-b border-white/5">
-        <div class="max-w-7xl mx-auto space-y-12">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <span class="text-xs font-mono text-cyberCyan uppercase tracking-widest">04 // Live Previews</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">SaaS Interactive Dashboard Modules</h2>
-                <p class="text-gray-400 text-sm">Explore interactive previews of custom financial reporting controls designed for operational oversight.</p>
-            </div>
-
-            <!-- Dashboard Filter Tab Selection Controllers -->
-            <div class="flex flex-wrap justify-center items-center gap-2 max-w-3xl mx-auto font-mono text-[11px] uppercase tracking-wider">
-                <button onclick="switchActiveDashboard('tab-gst')" id="btn-tab-gst" class="dashboard-tab-btn px-4 py-2 bg-white text-black font-bold rounded-lg transition-all">01 // GST FILING MODULE</button>
-                <button onclick="switchActiveDashboard('tab-ap')" id="btn-tab-ap" class="dashboard-tab-btn px-4 py-2 bg-white/5 border border-white/5 text-gray-400 rounded-lg hover:text-white transition-all">02 // AP/AR REALTIME LEDGER</button>
-                <button onclick="switchActiveDashboard('tab-compliance')" id="btn-tab-compliance" class="dashboard-tab-btn px-4 py-2 bg-white/5 border border-white/5 text-gray-400 rounded-lg hover:text-white transition-all">03 // CORPORATE MONITORING</button>
-            </div>
-
-            <!-- Active Graphical Render Window -->
-            <div class="max-w-4xl mx-auto glasscard rounded-xl p-6 border-white/10 shadow-2xl shadow-black relative overflow-hidden aspect-video flex flex-col justify-between">
-                <!-- Inner Graphic Workspace Frameworks -->
-                <div id="tab-gst" class="dashboard-render-pane space-y-6 my-auto">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-[10px] font-mono text-gray-500 block uppercase">SYSTEM METRIC FEED</span>
-                            <h4 class="font-heading font-bold text-xl text-white">GST Compliance Optimization Interface</h4>
-                        </div>
-                        <span class="px-2 py-0.5 bg-growthGreen/10 border border-growthGreen/20 text-growthGreen font-mono text-[10px] rounded animate-pulse">LIVE VERIFICATION ACTIVE</span>
-                    </div>
-                    <!-- Micro Graph Simulation Bars -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        <div class="bg-black/30 p-3.5 rounded-lg border border-white/5">
-                            <span class="text-[9px] font-mono text-gray-500 block">RECONCILIATION INDEX</span>
-                            <span class="text-lg font-heading font-bold text-white block mt-1">99.45%</span>
-                        </div>
-                        <div class="bg-black/30 p-3.5 rounded-lg border border-white/5">
-                            <span class="text-[9px] font-mono text-gray-500 block">TOTAL FILINGS EXTRACTED</span>
-                            <span class="text-lg font-heading font-bold text-cyberCyan block mt-1">1,482 files</span>
-                        </div>
-                        <div class="bg-black/30 p-3.5 rounded-lg border border-white/5">
-                            <span class="text-[9px] font-mono text-gray-500 block">ACCURACY MARGIN</span>
-                            <span class="text-lg font-heading font-bold text-growthGreen block mt-1">Error-free</span>
-                        </div>
-                        <div class="bg-black/30 p-3.5 rounded-lg border border-white/5">
-                            <span class="text-[9px] font-mono text-gray-500 block">PENDING DISPUTES</span>
-                            <span class="text-lg font-heading font-bold text-rose-400 block mt-1">Zero</span>
-                        </div>
-                    </div>
+    <section id="about" class="py-24 px-6 bg-gradient-to-b from-cyberDark via-gray-950 to-cyberDark border-t border-gray-900/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-xs font-mono uppercase tracking-widest text-neonBlue">The Genesis Story</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">From Accounts Professional <br>To <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonGreen">AI Builder 🚀</span></h2>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Navigating high-volume corporate financial reconciliations, tax compliance structures, and GST filing audits exposed a critical bottleneck: traditional spreadsheet processes eat up valuable professional cognitive capital.
+                    </p>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        I began studying context framing, algorithmic logic models, and advanced dynamic arrays to eliminate repetitive workflows. Today, I engineer automation layers that enable finance specialists, business operators, and job seekers to claim back their time.
+                    </p>
                 </div>
-
-                <div id="tab-ap" class="dashboard-render-pane hidden space-y-6 my-auto">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-[10px] font-mono text-gray-500 block uppercase">SYSTEM METRIC FEED</span>
-                            <h4 class="font-heading font-bold text-xl text-white">Accounts Payable / Receivable Ledger Engine</h4>
-                        </div>
-                        <span class="px-2 py-0.5 bg-cyberCyan/10 border border-cyberCyan/20 text-cyberCyan font-mono text-[10px] rounded">AGGREGATING LIVE PIPELINES</span>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="bg-black/30 p-4 rounded-lg border border-white/5">
-                            <span class="text-[9px] font-mono text-gray-500 block">LIQUID CASH RESERVE BALANCE</span>
-                            <span class="text-base font-heading font-bold text-white block mt-1">₹48,91,240.00</span>
-                        </div>
-                        <div class="bg-black/30 p-4 rounded-lg border border-white/5">
-                            <span class="text-[9px] font-mono text-gray-500 block">AP AGING TIMELINE LIMIT</span>
-                            <span class="text-base font-heading font-bold text-amber-400 block mt-1">Optimal Metrics (14 Days)</span>
-                        </div>
-                        <div class="bg-black/30 p-4 rounded-lg border border-white/5">
-                            <span class="text-[9px] font-mono text-gray-500 block">OUTSTANDING AR CHANNELS</span>
-                            <span class="text-base font-heading font-bold text-growthGreen block mt-1">₹14,20,550.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab-compliance" class="dashboard-render-pane hidden space-y-6 my-auto">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-[10px] font-mono text-gray-500 block uppercase">SYSTEM METRIC FEED</span>
-                            <h4 class="font-heading font-bold text-xl text-white">Corporate Compliance Tracker</h4>
-                        </div>
-                        <span class="px-2 py-0.5 bg-purple-500/10 border border-purple-500/20 text-premiumPurple font-mono text-[10px] rounded">INTERNAL SYSTEM VERIFIED</span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-black/30 p-4 rounded-lg border border-white/5 flex items-center justify-between">
-                            <div>
-                                <span class="text-[9px] font-mono text-gray-500 block">MCA ASSIGNED SCHEDULER</span>
-                                <span class="text-sm font-heading font-bold text-white block mt-1">Returns Clear</span>
-                            </div>
-                            <i class="fa-solid fa-circle-check text-growthGreen text-lg"></i>
-                        </div>
-                        <div class="bg-black/30 p-4 rounded-lg border border-white/5 flex items-center justify-between">
-                            <div>
-                                <span class="text-[9px] font-mono text-gray-500 block">ANNUAL AUDITING RECONCILIATION</span>
-                                <span class="text-sm font-heading font-bold text-white block mt-1">Archive Secure</span>
-                            </div>
-                            <i class="fa-solid fa-shield text-cyberCyan text-lg"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Control Node Action Footer -->
-                <div class="pt-4 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-500 font-mono">
-                    <span>⚠️ LIVE PREVIEW MODE // DATA ENCRYPTED SECURELY</span>
-                    <button onclick="triggerDashboardSandboxHandshake()" class="text-cyberCyan hover:underline uppercase tracking-widest font-bold">BOOT SYSTEM MODULE DIRECTLY <i class="fa-solid fa-circle-arrow-right ml-1"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. 🚀 CRITICAL HOW TO USE AI SYSTEM PROTOCOLS -->
-    <section id="workflows" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
-            <span class="text-xs font-mono text-cyberCyan uppercase tracking-widest">05 // Workflows Pipeline</span>
-            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">The Futuristic AI Execution Protocol</h2>
-            <p class="text-gray-400 text-sm">How to map raw generative intelligence directly to high-yield business solutions.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-            <div class="glasscard p-5 rounded-xl border-white/5 space-y-3 relative overflow-hidden">
-                <div class="absolute top-2 right-4 font-heading font-black text-4xl text-white/[0.03]">01</div>
-                <div class="text-cyberCyan font-mono font-bold text-xs uppercase tracking-wider"><i class="fa-solid fa-circle-notch animate-spin mr-2"></i> Targeted Tool Selection</div>
-                <h4 class="font-heading font-bold text-base text-gray-200 mt-2">Initialize Model Core</h4>
-                <p class="text-gray-400 text-xs leading-relaxed">Launch parameters inside your target engine layer (ChatGPT, Claude-3.5, or Gemini Context stacks).</p>
-            </div>
-
-            <div class="glasscard p-5 rounded-xl border-white/5 space-y-3 relative overflow-hidden">
-                <div class="absolute top-2 right-4 font-heading font-black text-4xl text-white/[0.03]">02</div>
-                <div class="text-growthGreen font-mono font-bold text-xs uppercase tracking-wider"><i class="fa-solid fa-bullseye mr-2"></i> Define Domain Objectives</div>
-                <h4 class="font-heading font-bold text-base text-gray-200 mt-2">Map Operational Vector</h4>
-                <p class="text-gray-400 text-xs leading-relaxed">Isolate core business priorities: dynamic ledger mapping, resume styling, or marketing copy generation.</p>
-            </div>
-
-            <div class="glasscard p-5 rounded-xl border-white/5 space-y-3 relative overflow-hidden">
-                <div class="absolute top-2 right-4 font-heading font-black text-4xl text-white/[0.03]">03</div>
-                <div class="text-premiumPurple font-mono font-bold text-xs uppercase tracking-wider"><i class="fa-solid fa-terminal mr-2"></i> Inject Calibrated Prompts</div>
-                <h4 class="font-heading font-bold text-base text-gray-200 mt-2">Deploy Prompt System</h4>
-                <p class="text-gray-400 text-xs leading-relaxed">Copy the specific, high-fidelity prompt from our storage library into the active model window.</p>
-            </div>
-
-            <div class="glasscard p-5 rounded-xl border-white/5 space-y-3 relative overflow-hidden">
-                <div class="absolute top-2 right-4 font-heading font-black text-4xl text-white/[0.03]">04</div>
-                <div class="text-white font-mono font-bold text-xs uppercase tracking-wider"><i class="fa-solid fa-bolt mr-2"></i> Real Work Integration</div>
-                <h4 class="font-heading font-bold text-base text-gray-200 mt-2">Extract High-Yield Output</h4>
-                <p class="text-gray-400 text-xs leading-relaxed">Review the generated layout and drop it directly into your live corporate projects for instant scaling.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. 🎨 THE CREATIVE VISUAL GALLERY LAYOUT (MASONRY ART SHOWCASE) -->
-    <section id="showcase" class="py-24 px-6 bg-slate-950/30 border-t border-white/5">
-        <div class="max-w-7xl mx-auto space-y-12">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <span class="text-xs font-mono text-cyberCyan uppercase tracking-widest">06 // Content Portfolio</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Visual & Content Arts Gallery</h2>
-                <p class="text-gray-400 text-sm">Where advanced structural synthesis matches cinematic visualization art models.</p>
-            </div>
-
-            <!-- Authentic Responsive CSS Columns Masonry Engine Layout -->
-            <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_auto] max-w-6xl mx-auto">
                 
-                <div class="masonry-item glasscard p-4 rounded-xl border-white/5 relative group overflow-hidden break-inside-avoid">
-                    <div class="w-full aspect-[4/3] bg-gradient-to-tr from-cyan-950 to-slate-900 rounded-lg flex items-center justify-center text-cyberCyan mb-4"><i class="fa-solid fa-id-card-clip text-3xl"></i></div>
-                    <span class="text-[9px] font-mono text-cyberCyan block uppercase tracking-wider">CREATOR BLUEPRINTS</span>
-                    <h4 class="font-heading font-bold text-sm text-white mt-1">Pixar-Style Structured Character Sheets</h4>
-                    <p class="text-gray-400 text-xs mt-1.5 leading-relaxed">Calibrated configurations to output consistent character designs for narrative projects.</p>
-                </div>
-
-                <div class="masonry-item glasscard p-4 rounded-xl border-white/5 relative group overflow-hidden break-inside-avoid">
-                    <div class="w-full aspect-[3/4] bg-gradient-to-br from-purple-950 via-slate-900 to-black rounded-lg flex items-center justify-center text-premiumPurple mb-4"><i class="fa-solid fa-clapperboard text-3xl"></i></div>
-                    <span class="text-[9px] font-mono text-premiumPurple block uppercase tracking-wider">VISUAL STORYTELLING</span>
-                    <h4 class="font-heading font-bold text-sm text-white mt-1">Cinematic Narrative Walkscapes</h4>
-                    <p class="text-gray-400 text-xs mt-1.5 leading-relaxed">Generative parameters creating balanced, hand-in-hand cinematic scene progressions.</p>
-                </div>
-
-                <div class="masonry-item glasscard p-4 rounded-xl border-white/5 relative group overflow-hidden break-inside-avoid">
-                    <div class="w-full aspect-[1/1] bg-gradient-to-bl from-emerald-950 to-slate-900 rounded-lg flex items-center justify-center text-growthGreen mb-4"><i class="fa-solid fa-calendar-days text-3xl"></i></div>
-                    <span class="text-[9px] font-mono text-growthGreen block uppercase tracking-wider">COLLATERAL MATRIX</span>
-                    <h4 class="font-heading font-bold text-sm text-white mt-1">AI Productivity Calendar Layouts</h4>
-                    <p class="text-gray-400 text-xs mt-1.5 leading-relaxed">Automated organizational assets engineered to display clean structural day timelines.</p>
-                </div>
-
-                <div class="masonry-item glasscard p-4 rounded-xl border-white/5 relative group overflow-hidden break-inside-avoid">
-                    <div class="w-full aspect-[4/5] bg-gradient-to-r from-slate-900 to-cyan-950 rounded-lg flex items-center justify-center text-cyan-400 mb-4"><i class="fa-solid fa-chart-line text-3xl"></i></div>
-                    <span class="text-[9px] font-mono text-cyberCyan block uppercase tracking-wider">INFOGRAPHICS DESIGN</span>
-                    <h4 class="font-heading font-bold text-sm text-white mt-1">Financial Trends Visualization Data</h4>
-                    <p class="text-gray-400 text-xs mt-1.5 leading-relaxed">Transforming raw, complex ledger balances into highly engaging data infographics for social marketing platforms.</p>
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="glass-card p-5 rounded-xl border border-gray-800 flex gap-4 items-start">
+                        <div class="p-3 bg-gray-900 border border-gray-800 text-neonBlue rounded-lg shrink-0"><i class="fa-solid fa-calculator text-sm"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white font-mono">Phase 01 // Core Financial Logistics</h4>
+                            <p class="text-xs text-gray-400 mt-1">Managed transactional reconciliation frameworks, multi-tier corporate ledger structuring, and statutory GST verification routines.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-5 rounded-xl border border-gray-800 flex gap-4 items-start">
+                        <div class="p-3 bg-gray-900 border border-gray-800 text-neonGreen rounded-lg shrink-0"><i class="fa-solid fa-code-merge text-sm"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white font-mono">Phase 02 // Automation Pipeline Injection</h4>
+                            <p class="text-xs text-gray-400 mt-1">Began applying programmatic prompt patterns to distill complex statutory MCA guidelines, constructing dynamic dashboard tracking interfaces.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-5 rounded-xl border border-gray-800 flex gap-4 items-start">
+                        <div class="p-3 bg-gray-900 border border-gray-800 text-neonBlue rounded-lg shrink-0"><i class="fa-solid fa-rocket text-sm"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white font-mono">Phase 03 // Scale Engine Deployment</h4>
+                            <p class="text-xs text-gray-400 mt-1">Publishing highly fine-tuned AI workflows, optimized CV format packs, and dashboard configurations to elevate standard careers.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8. 💼 BESPOKE ENTERPRISE SERVICES LAYER -->
-    <section id="services" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
-            <span class="text-xs font-mono text-cyberCyan uppercase tracking-widest">07 // Professional Integration</span>
-            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Strategic Enterprise Modules</h2>
-            <p class="text-gray-400 text-sm">Bespoke operational scaling assistance designed for elite corporate departments and forward-looking independent businesses.</p>
+    <section id="skills" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-white">System Architecture & Skill Matrix</h2>
+            <p class="text-xs md:text-sm text-gray-400 mt-2">Bespoke functional competencies engineered to optimize output metrics.</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-5 rounded-xl glasscard border-white/5 flex flex-col justify-between space-y-4 hover:border-cyberCyan/30 transition-all">
-                <div class="space-y-2">
-                    <div class="text-growthGreen text-lg"><i class="fa-solid fa-scale-balanced"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white">GST & MCA Support Module</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Deploying automated validation models across indirect tax calculations to save hours of manual data entry.</p>
-                </div>
-                <a href="#contact" class="text-[10px] font-mono text-white inline-flex items-center gap-1 hover:text-growthGreen transition-colors">INITIALIZE MATRIX <i class="fa-solid fa-chevron-right text-[8px]"></i></a>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card p-6 rounded-xl hover:border-neonBlue transition duration-300 group">
+                <i class="fa-solid fa-brain-circuit text-xl text-neonBlue mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">Prompt Engineering</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Developing structural context windows for corporate accounting audit tasks.</p>
             </div>
-
-            <div class="p-5 rounded-xl glasscard border-white/5 flex flex-col justify-between space-y-4 hover:border-cyberCyan/30 transition-all">
-                <div class="space-y-2">
-                    <div class="text-cyberCyan text-lg"><i class="fa-solid fa-square-poll-vertical"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white">Custom Analytics Dashboards</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Building interactive spreadsheets and executive tracking tools mapped perfectly to your operational business priorities.</p>
-                </div>
-                <a href="#contact" class="text-[10px] font-mono text-white inline-flex items-center gap-1 hover:text-cyberCyan transition-colors">INITIALIZE MATRIX <i class="fa-solid fa-chevron-right text-[8px]"></i></a>
+            <div class="glass-card p-6 rounded-xl hover:border-neonGreen transition duration-300 group">
+                <i class="fa-solid fa-file-invoice-dollar text-xl text-neonGreen mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">Excel Automation</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Power Query pipelines, transactional pattern parsing rules, and complex dynamic arrays.</p>
             </div>
-
-            <div class="p-5 rounded-xl glasscard border-white/5 flex flex-col justify-between space-y-4 hover:border-cyberCyan/30 transition-all">
-                <div class="space-y-2">
-                    <div class="text-premiumPurple text-lg"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white">AI Automation Consulting</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Integrating custom AI prompt stacks directly into your business back office to completely eliminate manual processing tasks.</p>
-                </div>
-                <a href="#contact" class="text-[10px] font-mono text-white inline-flex items-center gap-1 hover:text-premiumPurple transition-colors">INITIALIZE MATRIX <i class="fa-solid fa-chevron-right text-[8px]"></i></a>
+            <div class="glass-card p-6 rounded-xl hover:border-neonBlue transition duration-300 group">
+                <i class="fa-solid fa-chart-network text-xl text-neonBlue mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">Finance Dashboards</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Dynamic visualization control hubs monitoring operational capital efficiency models.</p>
             </div>
-
-            <div class="p-5 rounded-xl glasscard border-white/5 flex flex-col justify-between space-y-4 hover:border-cyberCyan/30 transition-all">
-                <div class="space-y-2">
-                    <div class="text-amber-400 text-lg"><i class="fa-solid fa-utensils"></i></div>
-                    <h4 class="font-heading font-bold text-base text-white">Cloud Kitchen Brand Blueprint</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">Designing high-converting digital setups, optimized menus, and localized search engine discovery tactics for food spaces.</p>
-                </div>
-                <a href="#contact" class="text-[10px] font-mono text-white inline-flex items-center gap-1 hover:text-amber-400 transition-colors">INITIALIZE MATRIX <i class="fa-solid fa-chevron-right text-[8px]"></i></a>
+            <div class="glass-card p-6 rounded-xl hover:border-neonGreen transition duration-300 group">
+                <i class="fa-solid fa-shield-check text-xl text-neonGreen mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">GST & MCA Compliance</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Automating regulatory checking matrices to mitigate transaction mapping friction.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- 9. 📚 DEEP SYSTEM KNOWLEDGE BASES (SEO BLOG ARCHIVE) -->
-    <section id="blog" class="py-24 px-6 bg-slate-950/20 border-t border-white/5">
-        <div class="max-w-7xl mx-auto space-y-12">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <span class="text-xs font-mono text-cyberCyan uppercase tracking-widest">08 // Data Publications</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">The Intelligence Hub</h2>
-                <p class="text-gray-400 text-sm">Deep architectural guides exploring data structures, automated workflows, and modern enterprise productivity scaling.</p>
+            <div class="glass-card p-6 rounded-xl hover:border-neonBlue transition duration-300 group">
+                <i class="fa-solid fa-user-tie text-xl text-neonBlue mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">Resume Optimization</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Structuring application blueprints explicitly weighted for Applicant Tracking Systems (ATS).</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <article class="p-5 rounded-xl glasscard border-white/5 space-y-4 group cursor-pointer hover:border-white/10 transition-all">
-                    <span class="text-[10px] font-mono text-growthGreen block uppercase tracking-widest">TAX SYSTEM METRICS</span>
-                    <h3 class="font-heading font-bold text-base text-white group-hover:text-cyberCyan transition-colors">How Modern Finance Specialists Safely Integrate Custom AI Workflows</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">A complete technical breakdown showing how to securely analyze internal balances without compromising proprietary enterprise records.</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[10px] font-mono text-gray-500">
-                        <span>4 min read</span>
-                        <span class="text-white uppercase font-bold">ACCESS TRANSCRIPTS <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[8px]"></i></span>
-                    </div>
-                </article>
-
-                <article class="p-5 rounded-xl glasscard border-white/5 space-y-4 group cursor-pointer hover:border-white/10 transition-all">
-                    <span class="text-[10px] font-mono text-cyberCyan block uppercase tracking-widest">PROMPT OPERATIONS</span>
-                    <h3 class="font-heading font-bold text-base text-white group-hover:text-cyberCyan transition-colors">Calibrating High-Performance ChatGPT Prompts for Elite Career Growth</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">Step-by-step instructions on setting up advanced, multi-stage prompt systems that evaluate candidate profiles exactly like an executive recruiter.</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[10px] font-mono text-gray-500">
-                        <span>5 min read</span>
-                        <span class="text-white uppercase font-bold">ACCESS TRANSCRIPTS <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[8px]"></i></span>
-                    </div>
-                </article>
-
-                <article class="p-5 rounded-xl glasscard border-white/5 space-y-4 group cursor-pointer hover:border-white/10 transition-all">
-                    <span class="text-[10px] font-mono text-premiumPurple block uppercase tracking-widest">MACRO SHEET DESIGN</span>
-                    <h3 class="font-heading font-bold text-base text-white group-hover:text-cyberCyan transition-colors">Simplifying GST Data Verification: Pairing Advanced Excel Logic with AI Engines</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">How to map raw transaction tables into perfectly organized layouts using automated routines, completely cutting out manual data cleanup.</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[10px] font-mono text-gray-500">
-                        <span>7 min read</span>
-                        <span class="text-white uppercase font-bold">ACCESS TRANSCRIPTS <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[8px]"></i></span>
-                    </div>
-                </article>
+            <div class="glass-card p-6 rounded-xl hover:border-neonGreen transition duration-300 group">
+                <i class="fa-solid fa-share-nodes text-xl text-neonGreen mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">LinkedIn Branding</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Configuring account schemas to increase outbound recruitment inbound inquiry metrics.</p>
+            </div>
+            <div class="glass-card p-6 rounded-xl hover:border-neonBlue transition duration-300 group">
+                <i class="fa-solid fa-bolt text-xl text-neonBlue mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">Productivity Systems</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Developing zero-friction informational environments using cohesive workspace blueprints.</p>
+            </div>
+            <div class="glass-card p-6 rounded-xl hover:border-neonGreen transition duration-300 group">
+                <i class="fa-solid fa-folder-open text-xl text-neonGreen mb-4 block group-hover:scale-110 transition"></i>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-white">GitHub for Non-Tech</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Deploying business tracking repositories using minimal terminal code interactions.</p>
             </div>
         </div>
     </section>
 
-    <!-- 10. 📞 HIGH-CONVERSION SYSTEM INTAKE (CONTACT MATRIX) -->
-    <section id="contact" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5 relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-cyberCyan/5 to-growthGreen/5 rounded-2xl filter blur-3xl pointer-events-none"></div>
-        
-        <div class="glasscard rounded-2xl p-8 md:p-12 border-white/10 space-y-8 relative z-10">
-            <div class="text-center space-y-2">
-                <span class="px-2.5 py-0.5 rounded font-mono text-[10px] text-cyberCyan bg-cyberCyan/10 border border-cyberCyan/20 uppercase tracking-widest">SECURE OUTBOUND INTERFACE</span>
-                <h2 class="font-heading font-black text-3xl text-white tracking-tight">Initialize System Integration</h2>
-                <p class="text-gray-400 text-xs">Let's deploy high-performance financial sheets, tailored execution dashboards, or custom back-office AI systems together.</p>
-            </div>
-
-            <form class="space-y-4" onsubmit="executeFormTransmission(event)">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-mono uppercase tracking-wider text-gray-400">Identified Corporate Name</label>
-                        <input type="text" required id="form-name" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-xs font-mono focus:outline-none focus:border-cyberCyan text-white">
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-[10px] font-mono uppercase tracking-wider text-gray-400">Secure Communication Email</label>
-                        <input type="email" required id="form-email" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-xs font-mono focus:outline-none focus:border-cyberCyan text-white">
-                    </div>
-                </div>
-                <div class="space-y-1.5">
-                    <label class="text-[10px] font-mono uppercase tracking-wider text-gray-400">Target Operational Domain Focus</label>
-                    <select id="form-domain" class="w-full bg-darkbg border border-white/10 rounded-lg px-4 py-3 text-xs font-mono focus:outline-none focus:border-cyberCyan text-gray-300">
-                        <option>Advanced Enterprise Financial Dashboards Architecture</option>
-                        <option>GST / Corporate Compliance System Engineering</option>
-                        <option>Generative AI Automation Pipelines Integration</option>
-                        <option>Cloud Kitchen Strategic Digital Identity Mapping</option>
-                        <option>Other Operational Acceleration Request</option>
-                    </select>
-                </div>
-                <div class="space-y-1.5">
-                    <label class="text-[10px] font-mono uppercase tracking-wider text-gray-400">Project Parameters Definition</label>
-                    <textarea rows="4" required id="form-message" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-xs font-mono focus:outline-none focus:border-cyberCyan text-white placeholder-gray-700" placeholder="Describe the current operational friction point or system automation requirements..."></textarea>
-                </div>
-
-                <button type="submit" id="submit-btn" class="w-full py-3.5 bg-gradient-to-r from-cyberCyan to-growthGreen text-black font-heading font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-cyberCyan/10 hover:opacity-90 transition-opacity">
-                    Transmit Integration Pipeline Request
-                </button>
-            </form>
-
-            <!-- Metadata Signature Card Footer Block -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/5 text-center text-xs font-mono">
+    <section id="downloads" class="py-24 px-6 bg-gray-950/40 border-y border-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 mb-12">
                 <div>
-                    <p class="text-gray-500 uppercase text-[10px]">Principal Architect</p>
-                    <p class="text-white font-medium mt-0.5">Vikash Pathak</p>
+                    <h2 class="text-3xl font-bold text-white">Central Download Registry</h2>
+                    <p class="text-xs md:text-sm text-gray-400 mt-1 font-mono">Access production-ready template sheets and curated prompt blocks.</p>
                 </div>
-                <div>
-                    <p class="text-gray-500 uppercase text-[10px]">Strategic Hub Coordinates</p>
-                    <p class="text-white font-medium mt-0.5">Bangalore, India — Online Nationwide</p>
+                
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterCategory('all')" class="filter-btn px-4 py-2 text-xs font-bold rounded bg-neonBlue text-black tracking-wider transition uppercase">All Registries</button>
+                    <button onclick="filterCategory('finance')" class="filter-btn px-4 py-2 text-xs font-bold rounded bg-gray-900 border border-gray-800 text-gray-400 tracking-wider hover:text-white transition uppercase">Finance Frameworks</button>
+                    <button onclick="filterCategory('resumes')" class="filter-btn px-4 py-2 text-xs font-bold rounded bg-gray-900 border border-gray-800 text-gray-400 tracking-wider hover:text-white transition uppercase">Career Blueprints</button>
+                    <button onclick="filterCategory('prompts')" class="filter-btn px-4 py-2 text-xs font-bold rounded bg-gray-900 border border-gray-800 text-gray-400 tracking-wider hover:text-white transition uppercase">AI Prompt Packs</button>
                 </div>
-                <!-- Network Vectors Integration Links -->
-                <div class="flex justify-center gap-3 items-center">
-                    <a href="#" class="w-8 h-8 rounded-lg bg-white/5 border border-white/5 hover:border-cyberCyan flex items-center justify-center text-white text-xs transition-colors" title="LinkedIn Profile Connection"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" class="w-8 h-8 rounded-lg bg-white/5 border border-white/5 hover:border-cyberCyan flex items-center justify-center text-white text-xs transition-colors" title="Instagram Profile Portfolio View"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-8 h-8 rounded-lg bg-white/5 border border-white/5 hover:border-cyberCyan flex items-center justify-center text-white text-xs transition-colors" title="WhatsApp Communication Routing Channel"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="download-grid">
+                
+                <div class="download-card glass-card rounded-xl overflow-hidden flex flex-col justify-between" data-cat="finance">
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2 py-0.5 text-[9px] font-mono tracking-widest bg-neonGreen/10 text-neonGreen border border-neonGreen/20 rounded uppercase">FREE EXTENSION</span>
+                            <i class="fa-regular fa-file-excel text-lg text-emerald-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">GST Reconciliation Ledger</h3>
+                            <p class="text-xs text-gray-400 mt-1 leading-relaxed">Automate transaction mismatch tracking between raw purchase accounts and statutory GSTR-2B balance feeds.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-950/60 border-t border-gray-900/60 flex gap-2">
+                        <a href="templates/finance/GST_Tracker_Vikash.xlsx" download class="flex-1 text-center py-2 text-xs bg-gray-900 border border-gray-800 text-white font-bold rounded hover:border-neonBlue transition font-mono"><i class="fa-solid fa-download mr-2"></i>GET FILE</a>
+                        <button onclick="alert('Open the spreadsheet, navigate to the Setup sheet, paste your raw GSTR-2B JSON or Excel dump, then click Reconcile Ledger.')" class="px-3 py-2 text-xs glass-card rounded text-gray-400 hover:text-white transition"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                </div>
+
+                <div class="download-card glass-card rounded-xl overflow-hidden flex flex-col justify-between" data-cat="finance">
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2 py-0.5 text-[9px] font-mono tracking-widest bg-neonGreen/10 text-neonGreen border border-neonGreen/20 rounded uppercase">FREE EXTENSION</span>
+                            <i class="fa-regular fa-file-excel text-lg text-emerald-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">AP Aging Report Framework</h3>
+                            <p class="text-xs text-gray-400 mt-1 leading-relaxed">Dynamic maturity calculation engine for mapping corporate payables structure across configurable maturity buckets.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-950/60 border-t border-gray-900/60 flex gap-2">
+                        <a href="templates/finance/AP_Aging_Report.xlsx" download class="flex-1 text-center py-2 text-xs bg-gray-900 border border-gray-800 text-white font-bold rounded hover:border-neonBlue transition font-mono"><i class="fa-solid fa-download mr-2"></i>GET FILE</a>
+                        <button onclick="alert('Import your vendor transaction ledger, set the cutoff run date parameters, and watch the formula matrices expand aging timelines instantly.')" class="px-3 py-2 text-xs glass-card rounded text-gray-400 hover:text-white transition"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                </div>
+
+                <div class="download-card glass-card rounded-xl overflow-hidden flex flex-col justify-between" data-cat="resumes">
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2 py-0.5 text-[9px] font-mono tracking-widest bg-neonBlue/10 text-neonBlue border border-neonBlue/20 rounded uppercase">CAREER ASSET</span>
+                            <i class="fa-regular fa-file-word text-lg text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">ATS-Optimized Executive CV Structure</h3>
+                            <p class="text-xs text-gray-400 mt-1 leading-relaxed">Clean, highly parsable chronological layout engineered to comply with enterprise automated filtering systems.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-950/60 border-t border-gray-900/60 flex gap-2">
+                        <a href="templates/resumes/ATS_Experienced_Template.docx" download class="flex-1 text-center py-2 text-xs bg-gray-900 border border-gray-800 text-white font-bold rounded hover:border-neonBlue transition font-mono"><i class="fa-solid fa-download mr-2"></i>GET FILE</a>
+                        <button onclick="alert('Replace placeholder sections with metric-driven accomplishments. Maintain clean formatting constraints to secure clear algorithmic profiling scores.')" class="px-3 py-2 text-xs glass-card rounded text-gray-400 hover:text-white transition"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                </div>
+
+                <div class="download-card glass-card rounded-xl overflow-hidden flex flex-col justify-between" data-cat="prompts">
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2 py-0.5 text-[9px] font-mono tracking-widest bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded uppercase">PROMPT PACK</span>
+                            <i class="fa-solid fa-terminal text-lg text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">ChatGPT Financial Analysis Matrix</h3>
+                            <p class="text-xs text-gray-400 mt-1 leading-relaxed">Structured multi-tier context templates designed to parse raw balance ledger statements for corporate health signals.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-950/60 border-t border-gray-900/60 flex gap-2">
+                        <a href="templates/prompts/ChatGPT_Finance_Engine.txt" download class="flex-1 text-center py-2 text-xs bg-gray-900 border border-gray-800 text-white font-bold rounded hover:border-neonBlue transition font-mono"><i class="fa-solid fa-download mr-2"></i>GET FILE</a>
+                        <button onclick="alert('Copy the prompt directly into your system session, change context variables to align with current objectives, then input your text ledger reports.')" class="px-3 py-2 text-xs glass-card rounded text-gray-400 hover:text-white transition"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                </div>
+
+                <div class="download-card glass-card rounded-xl overflow-hidden flex flex-col justify-between" data-cat="prompts">
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2 py-0.5 text-[9px] font-mono tracking-widest bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded uppercase">PROMPT PACK</span>
+                            <i class="fa-solid fa-terminal text-lg text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Gemini High-Output Creativity Deck</h3>
+                            <p class="text-xs text-gray-400 mt-1 leading-relaxed">Advanced instructional blocks engineered to streamline digital content development pipelines with specific semantic rules.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-950/60 border-t border-gray-900/60 flex gap-2">
+                        <a href="templates/prompts/Gemini_Content_Pack.txt" download class="flex-1 text-center py-2 text-xs bg-gray-900 border border-gray-800 text-white font-bold rounded hover:border-neonBlue transition font-mono"><i class="fa-solid fa-download mr-2"></i>GET FILE</a>
+                        <button onclick="alert('Load this content pipeline into Gemini to generate multi-angle educational frameworks optimized for platform algorithms.')" class="px-3 py-2 text-xs glass-card rounded text-gray-400 hover:text-white transition"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                </div>
+
+                <div class="download-card glass-card rounded-xl overflow-hidden flex flex-col justify-between" data-cat="finance">
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2 py-0.5 text-[9px] font-mono tracking-widest bg-neonGreen/10 text-neonGreen border border-neonGreen/20 rounded uppercase">FREE EXTENSION</span>
+                            <i class="fa-regular fa-file-excel text-lg text-emerald-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Expense Tracker Console</h3>
+                            <p class="text-xs text-gray-400 mt-1 leading-relaxed">Integrated workbook layout equipped with interactive macro structures to track localized cloud kitchen or business budgets.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-950/60 border-t border-gray-900/60 flex gap-2">
+                        <a href="templates/finance/Expense_Tracker.xlsx" download class="flex-1 text-center py-2 text-xs bg-gray-900 border border-gray-800 text-white font-bold rounded hover:border-neonBlue transition font-mono"><i class="fa-solid fa-download mr-2"></i>GET FILE</a>
+                        <button onclick="alert('Log routine expense transactions inside the ledger input sheet to update downstream metric visualizations automatically.')" class="px-3 py-2 text-xs glass-card rounded text-gray-400 hover:text-white transition"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboards" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="mb-12">
+            <span class="text-xs font-mono uppercase tracking-widest text-neonGreen">Operational Node Control Panels</span>
+            <h2 class="text-3xl font-bold text-white mt-1">Interactive UI Interfaces</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="glass-card p-6 rounded-xl border border-gray-800 neon-glow-green transition duration-300">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h4 class="text-sm font-mono text-neonGreen font-bold uppercase tracking-widest">// NODE 01: GST COMPLIANCE</h4>
+                        <h3 class="text-lg font-bold text-white mt-1">Input Credit Variance Console</h3>
+                    </div>
+                    <span class="px-2 py-1 rounded bg-neonGreen/10 text-neonGreen text-[10px] font-mono tracking-wider font-bold">STABLE SYNC</span>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mb-6 text-center">
+                    <div class="bg-gray-900/90 p-3 rounded-lg border border-gray-800/80">
+                        <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Total Ledger</span>
+                        <span class="text-base font-bold font-mono text-white block mt-0.5">₹4,821,500</span>
+                    </div>
+                    <div class="bg-gray-900/90 p-3 rounded-lg border border-gray-800/80">
+                        <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Variance Alert</span>
+                        <span class="text-base font-bold font-mono text-amber-500 block mt-0.5">₹12,450</span>
+                    </div>
+                    <div class="bg-gray-900/90 p-3 rounded-lg border border-gray-800/80">
+                        <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Match Accuracy</span>
+                        <span class="text-base font-bold font-mono text-neonGreen block mt-0.5">99.74%</span>
+                    </div>
+                </div>
+                <div class="h-32 bg-gray-950 rounded-lg p-3 flex items-end space-x-2 border border-gray-900">
+                    <div class="w-full bg-gray-800 rounded-t h-1/3 hover:bg-neonGreen transition"></div>
+                    <div class="w-full bg-gray-800 rounded-t h-1/2 hover:bg-neonGreen transition"></div>
+                    <div class="w-full bg-gray-800 rounded-t h-2/3 hover:bg-neonGreen transition"></div>
+                    <div class="w-full bg-neonGreen/80 rounded-t h-[95%] transition"></div>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl border border-gray-800 neon-glow-blue transition duration-300">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h4 class="text-sm font-mono text-neonBlue font-bold uppercase tracking-widest">// NODE 02: BUSINESS PAYABLES</h4>
+                        <h3 class="text-lg font-bold text-white mt-1">AP/AR Liquid Allocation Track</h3>
+                    </div>
+                    <span class="px-2 py-1 rounded bg-neonBlue/10 text-neonBlue text-[10px] font-mono tracking-wider font-bold">SYSTEM ACTIVE</span>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mb-6 text-center">
+                    <div class="bg-gray-900/90 p-3 rounded-lg border border-gray-800/80">
+                        <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Outstanding AP</span>
+                        <span class="text-base font-bold font-mono text-white block mt-0.5">₹1,189,000</span>
+                    </div>
+                    <div class="bg-gray-900/90 p-3 rounded-lg border border-gray-800/80">
+                        <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">DSO Index</span>
+                        <span class="text-base font-bold font-mono text-neonBlue block mt-0.5">28.4 Days</span>
+                    </div>
+                    <div class="bg-gray-900/90 p-3 rounded-lg border border-gray-800/80">
+                        <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Risk Profile</span>
+                        <span class="text-base font-bold font-mono text-neonGreen block mt-0.5">Minimal</span>
+                    </div>
+                </div>
+                <div class="h-32 bg-gray-950 rounded-lg flex items-center justify-center border border-gray-900 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_60%)]"></div>
+                    <div class="text-center z-10 space-y-1">
+                        <span class="text-[11px] text-gray-400 font-mono block"><i class="fa-solid fa-circle-nodes text-neonBlue mr-1.5"></i>Ledger Processing Matrix Armed</span>
+                        <span class="text-[10px] text-gray-600 block font-mono">No unallocated logs pending balance loops</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="workflows" class="py-24 px-6 bg-gradient-to-b from-cyberDark via-gray-950 to-cyberDark border-t border-gray-900/60">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-mono uppercase tracking-widest text-neonBlue">Standardized System Blueprints</span>
+                <h2 class="text-3xl font-bold text-white mt-1">Operational Integration Flow</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                <div class="glass-card p-6 rounded-xl relative space-y-3">
+                    <div class="w-8 h-8 rounded bg-gray-900 border border-gray-800 text-neonBlue flex items-center justify-center font-mono text-xs font-bold">01</div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Select Engine Layer</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Initialize a targeted engine terminal (ChatGPT, Claude, or Gemini Enterprise).</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl relative space-y-3">
+                    <div class="w-8 h-8 rounded bg-gray-900 border border-gray-800 text-neonGreen flex items-center justify-center font-mono text-xs font-bold">02</div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Define Mission Goal</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Isolate your functional target parameter (e.g., Ledger reconciliation, ATS re-weighting).</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl relative space-y-3">
+                    <div class="w-8 h-8 rounded bg-gray-900 border border-gray-800 text-neonBlue flex items-center justify-center font-mono text-xs font-bold">03</div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Inject Context Pack</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Deploy a pre-engineered prompt configuration template directly into the terminal.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl relative space-y-3">
+                    <div class="w-8 h-8 rounded bg-gray-900 border border-gray-800 text-neonGreen flex items-center justify-center font-mono text-xs font-bold">04</div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Execute Production</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">Map your updated output structures into your local business pipeline loops.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INLINE FLOATING CHATBOT WIDGET BOX -->
-    <div id="ai-chat-widget" class="fixed bottom-24 right-6 z-40 w-80 glasscard border-white/10 rounded-xl overflow-hidden hidden shadow-2xl flex flex-col justify-between aspect-[4/4.8]">
-        <div class="p-3 bg-white/5 border-b border-white/5 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-growthGreen animate-ping"></span>
-                <span class="font-mono text-[10px] text-gray-200 uppercase font-bold">VBAO_CORE_ASSISTANT v2.6</span>
+    <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="mb-12">
+            <span class="text-xs font-mono uppercase tracking-widest text-purple-400">Generative Synthesis Lab</span>
+            <h2 class="text-3xl font-bold text-white mt-1">AI Content Display Grid</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="glass-card aspect-square rounded-xl overflow-hidden relative group border border-gray-900">
+                <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/20 to-cyberDark/90 opacity-80 group-hover:opacity-60 transition duration-300"></div>
+                <div class="absolute inset-0 flex flex-col justify-end p-4 z-10">
+                    <span class="text-[9px] font-mono text-neonBlue tracking-wider uppercase">POSTER DESIGN</span>
+                    <h4 class="text-xs font-bold text-white mt-0.5">Cinematic Asset Matrix</h4>
+                </div>
             </div>
-            <button onclick="togglePlatformChatbot()" class="text-gray-500 hover:text-white text-xs"><i class="fa-solid fa-angle-down"></i></button>
+            <div class="glass-card aspect-square rounded-xl overflow-hidden relative group border border-gray-900">
+                <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/20 to-cyberDark/90 opacity-80 group-hover:opacity-60 transition duration-300"></div>
+                <div class="absolute inset-0 flex flex-col justify-end p-4 z-10">
+                    <span class="text-[9px] font-mono text-neonGreen tracking-wider uppercase">CHARACTER SHEET</span>
+                    <34 class="text-xs font-bold text-white mt-0.5">Pixar-Style Brand Core</h4>
+                </div>
+            </div>
+            <div class="glass-card aspect-square rounded-xl overflow-hidden relative group border border-gray-900">
+                <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-cyberDark/90 opacity-80 group-hover:opacity-60 transition duration-300"></div>
+                <div class="absolute inset-0 flex flex-col justify-end p-4 z-10">
+                    <span class="text-[9px] font-mono text-purple-400 tracking-wider uppercase">DATA GRAPHIC</span>
+                    <h4 class="text-xs font-bold text-white mt-0.5">Financial Infographics</h4>
+                </div>
+            </div>
+            <div class="glass-card aspect-square rounded-xl overflow-hidden relative group border border-gray-900">
+                <div class="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-cyberDark/90 opacity-80 group-hover:opacity-60 transition duration-300"></div>
+                <div class="absolute inset-0 flex flex-col justify-end p-4 z-10">
+                    <span class="text-[9px] font-mono text-neonBlue tracking-wider uppercase">WORK INFRASTRUCTURE</span>
+                    <h4 class="text-xs font-bold text-white mt-0.5">AI Productivity System</h4>
+                </div>
+            </div>
         </div>
-        <!-- Automated Logs Feed Frame -->
-        <div id="chat-logs-display" class="p-4 space-y-2 overflow-y-auto text-[11px] font-mono flex-grow">
-            <p class="text-gray-500">[LOG]: Encryption keys generated successfully.</p>
-            <p class="text-cyberCyan">🤖 Assistant: "Welcome. I am ready to route prompt libraries, extract calculated spreadsheets, or patch your pipeline directly to Vikash. What do you want to build today?"</p>
-        </div>
-        <div class="p-2 border-t border-white/5 flex gap-1 bg-black/40">
-            <input type="text" id="chat-input" onkeydown="if(event.key==='Enter') transmitWidgetMessage()" placeholder="Request system task..." class="w-full bg-white/5 rounded border border-white/10 px-2 py-1.5 text-[11px] font-mono text-white focus:outline-none focus:border-cyberCyan">
-            <button onclick="transmitWidgetMessage()" class="px-2.5 bg-cyberCyan text-black text-xs rounded font-bold"><i class="fa-solid fa-arrow-turn-down rotate-90"></i></button>
-        </div>
-    </div>
+    </section>
 
-    <!-- PREMIUM PLATFORM FOOTER SIGNATURE -->
-    <footer class="border-t border-white/5 bg-black/60 py-8 px-6 text-center text-[11px] font-mono text-gray-500 space-y-2">
-        <p class="font-heading text-xs text-gray-300 font-bold tracking-wide">Built For Professionals Who Want To Grow Smarter 🚀</p>
-        <p>&copy; 2026 Vikash Builds AI. Platform operations and system code vectors protected globally.</p>
+    <section id="services" class="py-24 px-6 bg-gradient-to-b from-cyberDark via-gray-950 to-cyberDark border-t border-gray-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-mono uppercase tracking-widest text-neonGreen">Enterprise Optimization Engineering</span>
+                <h2 class="text-3xl font-bold text-white mt-1">Targeted Service Architectures</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:scale-[1.01] transition duration-300">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-mono text-neonBlue tracking-widest block uppercase">// ENGINE MODULE 01</span>
+                        <h3 class="text-xl font-bold text-white">GST Compliance & Reconciliation Automation</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Systematic script pipeline configuration aligning internal purchase records safely against electronic credit ledger states to eliminate verification errors.</p>
+                        <ul class="space-y-2 text-xs text-gray-400 pt-2 font-mono">
+                            <li><i class="fa-solid fa-circle-check text-neonGreen mr-2"></i> GSTR-1/3B Reconciliation</li>
+                            <li><i class="fa-solid fa-circle-check text-neonGreen mr-2"></i> Input Credit Mismatch Alerts</li>
+                            <li><i class="fa-solid fa-circle-check text-neonGreen mr-2"></i> Ledger Audit Logs Cleanup</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-gray-900 mt-6 flex justify-between items-center">
+                        <div>
+                            <span class="text-[9px] text-gray-500 block uppercase font-mono">Engagement Basis</span>
+                            <span class="text-xs font-bold text-white font-mono tracking-wide">Custom Project Base</span>
+                        </div>
+                        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="px-4 py-2 text-xs bg-gray-900 border border-gray-800 rounded text-white font-bold hover:border-neonGreen transition"><i class="fa-brands fa-whatsapp text-neonGreen mr-1.5"></i>Connect</a>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:scale-[1.01] transition duration-300 border border-neonBlue/20 shadow-lg shadow-neonBlue/5">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-mono text-neonBlue tracking-widest block uppercase">// ENGINE MODULE 02</span>
+                        <h3 class="text-xl font-bold text-white">AI-Powered Career & Profile Frameworks</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Re-structuring chronological candidate profiles and professional channel parameters to heavily elevate keyword tracking density across enterprise software layers.</p>
+                        <ul class="space-y-2 text-xs text-gray-400 pt-2 font-mono">
+                            <li><i class="fa-solid fa-circle-check text-neonBlue mr-2"></i> ATS Keyword Target Profiling</li>
+                            <li><i class="fa-solid fa-circle-check text-neonBlue mr-2"></i> Outbound Cover Structuring</li>
+                            <li><i class="fa-solid fa-circle-check text-neonBlue mr-2"></i> Technical Prompt Interview Libraries</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-gray-900 mt-6 flex justify-between items-center">
+                        <div>
+                            <span class="text-[9px] text-gray-500 block uppercase font-mono">Engagement Basis</span>
+                            <span class="text-xs font-bold text-neonBlue font-mono tracking-wide">Premium Tier Matrix</span>
+                        </div>
+                        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="px-4 py-2 text-xs bg-neonBlue text-black rounded font-bold hover:opacity-90 transition"><i class="fa-brands fa-whatsapp mr-1.5"></i>Connect</a>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:scale-[1.01] transition duration-300">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-mono text-neonGreen tracking-widest block uppercase">// ENGINE MODULE 03</span>
+                        <h3 class="text-xl font-bold text-white">Bespoke Enterprise Control Dashboards</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Tailored workbook creation mapping working capital states, accounting metrics, and complex operational cost structures inside visual analytic frameworks.</p>
+                        <ul class="space-y-2 text-xs text-gray-400 pt-2 font-mono">
+                            <li><i class="fa-solid fa-circle-check text-neonGreen mr-2"></i> Accounts Receivable Aging Matrix</li>
+                            <li><i class="fa-solid fa-circle-check text-neonGreen mr-2"></i> Operational Budget Consoles</li>
+                            <li><i class="fa-solid fa-circle-check text-neonGreen mr-2"></i> Custom Visual Logic Pipelines</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-gray-900 mt-6 flex justify-between items-center">
+                        <div>
+                            <span class="text-[9px] text-gray-500 block uppercase font-mono">Engagement Basis</span>
+                            <span class="text-xs font-bold text-white font-mono tracking-wide">Custom Project Base</span>
+                        </div>
+                        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="px-4 py-2 text-xs bg-gray-900 border border-gray-800 rounded text-white font-bold hover:border-neonGreen transition"><i class="fa-brands fa-whatsapp text-neonGreen mr-1.5"></i>Connect</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 max-w-4xl mx-auto text-center relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.02),transparent_60%)] pointer-events-none"></div>
+        <div class="space-y-6 relative z-10">
+            <span class="text-xs font-mono text-neonBlue tracking-widest block uppercase">// INTEGRATION JUNCTION</span>
+            <h2 class="text-3xl font-extrabold text-white">Initialize System Integration</h2>
+            <p class="text-xs md:text-sm text-gray-400 max-w-xl mx-auto leading-relaxed">
+                Ready to introduce fine-tuned efficiency pipelines to your business processes or drastically re-engineer your professional placement conversion parameters?
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 pt-4">
+                <a href="mailto:vikashpathak@example.com" class="px-6 py-3 bg-gradient-to-r from-neonBlue to-cyan-600 text-black font-bold rounded shadow-md transition transform hover:-translate-y-0.5 text-sm font-mono uppercase tracking-wider">Secure Email Line</a>
+                <a href="https://linkedin.com/in/vikash-pathak" target="_blank" class="px-6 py-3 bg-gray-900 border border-gray-800 text-white font-bold rounded hover:border-neonBlue transition transform hover:-translate-y-0.5 text-sm font-mono uppercase tracking-wider"><i class="fa-brands fa-linkedin-in mr-2 text-neonBlue"></i>LinkedIn Channel</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-gray-900 bg-cyberDark py-12 px-6 text-center text-[11px] text-gray-600 font-mono tracking-widest">
+        <p>&copy; 2026 VIKASH BUILDS AI // ARCHITECTURAL EFFICIENCY PLATFORM // ALL RIGHTS RESERVED</p>
     </footer>
 
-    <!-- INTERACTION HOOK FIXED ANCHORS -->
-    <button onclick="togglePlatformChatbot()" class="fixed bottom-6 left-6 z-40 p-3.5 bg-gradient-to-br from-cyberCyan to-slate-900 border border-cyberCyan/30 text-white rounded-xl shadow-xl hover:scale-105 transition-transform" title="Initialize Embedded Core Virtual Assistant">
-        <i class="fa-solid fa-headset text-base"></i>
-    </button>
-    <a href="https://wa.me/#" target="_blank" class="fixed bottom-6 right-6 z-40 p-3.5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-xl shadow-xl transition-transform hover:scale-105" title="Initiate Secure Operational Patch via WhatsApp Connection">
-        <i class="fa-brands fa-whatsapp text-lg text-white"></i>
-    </a>
-
-    <!-- AUTOMATED SYSTEM ARCHITECTURE OPERATIONAL SCRIPTS -->
     <script>
-        // 1. Initializer Core Canvas Clearing Sequence
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('system-loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => { 
-                    loader.style.display = 'none'; 
-                    triggerCounterSequences();
-                }, 700);
-            }, 600);
-        });
+        function filterCategory(category) {
+            // Update Filter Button Highlight States
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-neonBlue', 'text-black');
+                btn.classList.add('bg-gray-900', 'text-gray-400', 'border-gray-800');
+            });
 
-        // 2. Hardware-Accelerated Incremental Telemetry Counters
-        function triggerCounterSequences() {
-            const animateValue = (id, start, end, duration, suffix = "") => {
-                const obj = document.getElementById(id);
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    obj.innerHTML = Math.floor(progress * (end - start) + start) + suffix;
-                    if (progress < 1) window.requestAnimationFrame(step);
-                };
-                window.requestAnimationFrame(step);
-            };
-            animateValue("count-automation", 0, 10, 1200, "x");
-            animateValue("count-templates", 0, 25, 1500, "+");
-            animateValue("count-efficiency", 0, 100, 1000, "%");
-        }
+            // Highlight Active Selector Token
+            const eventTarget = window.event.currentTarget;
+            if(eventTarget) {
+                eventTarget.classList.remove('bg-gray-900', 'text-gray-400', 'border-gray-800');
+                eventTarget.classList.add('bg-neonBlue', 'text-black');
+            }
 
-        // 3. Responsive Navigation Interface Controls
-        function toggleDrawerMenu() {
-            document.getElementById('mobile-drawer').classList.toggle('hidden');
-        }
-
-        // 4. Custom Theme Aesthetic Locks
-        function toggleAestheticMode() {
-            alert('🔒 ACCESS DENIED: The interface parameters are permanently locked to Dark Modern Cyber Aesthetic mode to prevent visual layout performance drops.');
-        }
-
-        // 5. High-Velocity Asynchronous Resource Searching
-        function executeResourceFilter() {
-            const query = document.getElementById('resource-search').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.resource-card');
-            
+            // Execute Cards Display Toggle
+            const cards = document.querySelectorAll('.download-card');
             cards.forEach(card => {
-                const searchScope = card.getAttribute('data-name');
-                if (searchScope.includes(query)) {
+                if (category === 'all' || card.getAttribute('data-cat') === category) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
                 }
             });
         }
-
-        // 6. Native Browser File Generation Dispatch Loops (Download Simulators)
-        document.querySelectorAll('.download-trigger-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.closest('.resource-card');
-                const title = card.querySelector('span').textContent;
-                const fileName = title.toLowerCase().replace(/[^a-z0-9]+/g, '_') + "_build.txt";
-                
-                const metaString = `============================================================\nVIKASH BUILDS AI -- SYSTEM VERIFIED OUTPUT\n============================================================\nAsset Key Model: ${title}\nBuild Sequence Status: ARCHIVE VERIFIED STABLE\nGeneration Date Lifecycle: 2026 Release Framework\n\n[NOTICE]: Ready for seamless integration. Replace sample lines with active production datasets.`;
-                
-                const virtualLink = document.createElement('a');
-                virtualLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(metaString));
-                virtualLink.setAttribute('download', fileName);
-                virtualLink.style.display = 'none';
-                document.body.appendChild(virtualLink);
-                virtualLink.click();
-                document.body.removeChild(virtualLink);
-            });
-        });
-
-        // 7. Clipboard Prompt Copy Routing System
-        document.querySelectorAll('.prompt-copy-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.closest('.resource-card');
-                const title = card.querySelector('span').textContent;
-                
-                const pipelinePayload = `[SYSTEM CORE PIPELINE ARCHITECTURE INTERFACE: VIKASH BUILDS AI]\n[ROLE]: Expert Financial Engineering Model\n[OBJECTIVE]: Perform optimization calculations for: ${title}\n\n[CONTEXT]: Act as my senior systems deployment architect. Review raw inputs, eliminate empty tracking margins, and build an error-free corporate configuration module. Do not append conversational filler. Execute now.`;
-                
-                navigator.clipboard.writeText(pipelinePayload).then(() => {
-                    const originalHTML = this.innerHTML;
-                    this.innerHTML = 'COPIED! <i class="fa-solid fa-square-check ml-1"></i>';
-                    this.style.color = '#10B981';
-                    
-                    setTimeout(() => {
-                        this.innerHTML = originalHTML;
-                        this.style.color = '#A855F7';
-                    }, 2000);
-                });
-            });
-        });
-
-        // 8. Tabbed Interactive Dashboard State Switcher
-        function switchActiveDashboard(targetTabId) {
-            document.querySelectorAll('.dashboard-render-pane').forEach(pane => pane.classList.add('hidden'));
-            document.getElementById(targetTabId).classList.remove('hidden');
-            
-            document.querySelectorAll('.dashboard-tab-btn').forEach(btn => {
-                btn.className = "dashboard-tab-btn px-4 py-2 bg-white/5 border border-white/5 text-gray-400 rounded-lg hover:text-white transition-all";
-            });
-            
-            const activeBtnMap = {
-                'tab-gst': 'btn-tab-gst',
-                'tab-ap': 'btn-tab-ap',
-                'tab-compliance': 'btn-tab-compliance'
-            };
-            document.getElementById(activeBtnMap[targetTabId]).className = "dashboard-tab-btn px-4 py-2 bg-white text-black font-bold rounded-lg transition-all";
-        }
-
-        function triggerDashboardSandboxHandshake() {
-            alert("🚀 SANDBOX PIPELINE SUCCESSFUL\n\nDatabase access established securely. In a production environment, this link automatically connects via OAuth to display data straight from your enterprise systems.");
-        }
-
-        // 9. Embedded Virtual Chatbot Engine Mechanics
-        function togglePlatformChatbot() {
-            document.getElementById('ai-chat-widget').classList.toggle('hidden');
-        }
-
-        function transmitWidgetMessage() {
-            const input = document.getElementById('chat-input');
-            const query = input.value.trim();
-            if(!query) return;
-            
-            const logs = document.getElementById('chat-logs-display');
-            logs.innerHTML += `<p class="text-white mt-1">👤 User: "${query}"</p>`;
-            input.value = "";
-            
-            setTimeout(() => {
-                logs.innerHTML += `<p class="text-cyberCyan">[SYS_REPLY]: "Understood. Mapping parameters. Request successfully logged into our processing pipeline. To initiate direct engineering support, please fill out the intake form below."</p>`;
-                logs.scrollTop = logs.scrollHeight;
-            }, 600);
-        }
-
-        // 10. Forms Submission Pipeline Simulator
-        function executeFormTransmission(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submit-btn');
-            btn.textContent = "TRANSMITTING DATA PACKETS...";
-            btn.style.opacity = "0.6";
-            
-            setTimeout(() => {
-                alert("✨ TRANSMISSION SUCCESSFUL // PIPELINE ESTABLISHED\n\nYour automation request parameters have been cataloged securely. Vikash Pathak will review your structural requirements shortly.");
-                btn.textContent = "Transmit Integration Pipeline Request";
-                btn.style.opacity = "1";
-                document.getElementById('form-name').value = "";
-                document.getElementById('form-email').value = "";
-                document.getElementById('form-message').value = "";
-            }, 1200);
-        }
     </script>
+
 </body>
 </html>
